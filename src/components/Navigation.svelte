@@ -1,5 +1,6 @@
 <script>
 	import NavMenuItem from './NavMenuItem.svelte';
+	import { t, locale, locales } from '$lib/i18n';
 	let open = false;
 </script>
 
@@ -29,16 +30,26 @@
 		<div class="hidden w-full md:block md:w-auto bg-slate-100 dark:bg-slate-900">
 			<ul class="font-medium flex p-0 flex-row space-x-8 dark:bg-slate-900">
 				<li>
-					<NavMenuItem name={'Home'} path={'/'} />
+					<NavMenuItem name={$t('home')} path={'/'} />
 				</li>
 				<li>
-					<NavMenuItem name={'Profile'} path={'/profile'} />
+					<NavMenuItem name={$t('profile')} path={'/profile'} />
 				</li>
 				<li>
-					<NavMenuItem name={'Modules'} path={'/modules'} />
+					<NavMenuItem name={$t('modules')} path={'/modules'} />
 				</li>
 				<li>
-					<NavMenuItem name={'About Us'} path={'/about'} />
+					<NavMenuItem name={$t('about')} path={'/about'} />
+				</li>
+				<li>
+					<select
+						class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500 font-bold"
+						bind:value={$locale}
+					>
+						{#each locales as l}
+							<option value={l.id}>{l.name}</option>
+						{/each}
+					</select>
 				</li>
 			</ul>
 		</div>
@@ -56,7 +67,7 @@
 	>
 		<li>
 			<NavMenuItem
-				name={'Home'}
+				name={$t('home')}
 				path={'/'}
 				on:click={() => {
 					open = false;
@@ -65,7 +76,7 @@
 		</li>
 		<li>
 			<NavMenuItem
-				name={'Profile'}
+				name={$t('profile')}
 				path={'/profile'}
 				on:click={() => {
 					open = false;
@@ -74,7 +85,7 @@
 		</li>
 		<li>
 			<NavMenuItem
-				name={'Modules'}
+				name={$t('modules')}
 				path={'/modules'}
 				on:click={() => {
 					open = false;
@@ -83,7 +94,7 @@
 		</li>
 		<li>
 			<NavMenuItem
-				name={'About Us'}
+				name={$t('about')}
 				path={'/about'}
 				on:click={() => {
 					open = false;

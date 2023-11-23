@@ -1,20 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { t } from '$lib/i18n';
 	import ImageBanner from '../components/ImageBanner.svelte';
 	let slides = [
 		{
-			title: 'අපගේ දැක්ම',
-			description: 'පරිපුර්ණ අධ්‍යාපනයක් තුළින් විශිෂ්ට දරු පරපුරක්'
+			title: 'home.vision',
+			description: 'home.vision_description'
 		},
 		{
-			title: 'අපගේ මෙහෙවර',
-			description:
-				'යමබර හා පුළුල් අධ්‍යාපන ක්‍රියාවලියක් සම්පාදනය කිරීම තුළින් ඌව පළාතේ විශිෂ්ට දරු පරපුරක් බිහීකිරීම සදහා අධ්‍යාපන ක්ෂේත්‍රයේ සියලු භෞතික,මානව හා මුල්‍ය සම්පත් කාර්යක්ෂමව හා ඵලදායී ලෙස මෙහෙයවීමයි.'
+			title: 'home.mission',
+			description: 'home.mission_description'
 		},
 		{
-			title: 'සාදරයෙන් පිළිගනිමු',
-			description:
-				'බහුතල ඉගෙනුම් ක්‍රමවේදය පිළිබඳ මාර්ගගත ගුරු පුහුණු පාඨමාලාවට ඔබව සාදරයෙන් පිළිගනිමු'
+			title: 'home.welcome',
+			description: 'home.welcome_description'
 		}
 	];
 	let images = [
@@ -49,8 +48,8 @@
 	</section>
 	<section class="pt-10 flex flex-row justify-evenly">
 		<ImageBanner
-			title={slides[currentSlide].title}
-			description={slides[currentSlide].description}
+			title={$t(slides[currentSlide].title)}
+			description={$t(slides[currentSlide].description)}
 			imageUrl={images[currentImage]}
 		/>
 	</section>
