@@ -1,11 +1,13 @@
 <script lang="ts">
 	export let data;
 	let users = data.users;
+
+	import { t } from '$lib/i18n';
 </script>
 
 <div class="mx-auto max-w-screen-xl px-8 py-8 flex flex-col justify-center content-center h-full">
 	<h1 class="p-6 text-4xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
-		Admin Dashboard
+		{$t('admin_page')}
 	</h1>
 	<section class="pt-10 flex flex-col">
 		<h5 class="p-6 text-2xl font-bold tracking-tight text-slate-700 dark:text-slate-300">

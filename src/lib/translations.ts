@@ -1,4 +1,12 @@
 export default {
+    "title": {
+        si: "ඌව පළාත් අධ්‍යාපන දෙපාර්තමේන්තුව",
+        en: "Uva Provincial Department Of Education", ta: "ஊவா மாகாண கல்வி திணைக்களம்"
+    },
+    "subtitle": {
+        si: "බහුතල ඉගෙනුම් ක්‍රම වේදය පිළිබද මාර්ගගත ගුරු පුහුණු පාඨමාලාව",
+        en: "Online Teacher Training course on Multi Level Teaching Methods", ta: "பல நிலை கற்பித்தல் முறைகள் குறித்த ஆன்லைன் ஆசிரியர் பயிற்சி வகுப்பு"
+    },
     "home": {
         si: "මුල් පිටුව",
         en: "Home", ta: "முகப்புப்பக்கம்"
@@ -40,39 +48,78 @@ export default {
         en: "Welcome to the Online Teacher Training Course on the Multi Level Teaching Methods", ta: "பல நிலை கற்பித்தல் முறைகள் குறித்த ஆன்லைன் ஆசிரியர் பயிற்சி வகுப்பிற்கு வருக"
     },
     "register_here": {
-        en: "Register Here"
+        en: "Register Here",
+        si: "මෙහි ලියාපදිංචි වන්න",
+        ta: "இங்கே பதிவு செய்யவும்"
     },
     "login_here": {
-        en: "Login Here"
+        en: "Login Here",
+        si: "මෙතනින් ලොග් වෙන්න",
+        ta: "இங்கே உள்நுழைக"
     },
     "register_button": {
-        en: "Register"
+        en: "Register",
+        si: "ලියාපදිංචි වන්න",
+        ta: "பதிவு செய்யவும்"
     },
     "login_button": {
-        en: "Login"
+        en: "Login",
+        si: "ලොග් වෙන්න",
+        ta: "உள்நுழைக"
     },
     "no_account": {
-        en: "No Account?"
+        en: "Do not have an Account?",
+        si: "ගිණුමක් නැද්ද?",
+        ta: "கணக்கு வைத்திருக்கவில்லையா?"
     },
     "already_account": {
-        en: "Already have an Account?"
+        en: "Already have an Account?",
+        si: "දැනටමත් ගිණුමක් තිබේද?",
+        ta: "ஏற்கனவே ஒரு கணக்கு உள்ளதா?"
     },
     "user.username": {
-        en: "Username"
+        en: "Username",
+        si: "පරිශීලක නාමය",
+        ta: "பயனர் பெயர்"
     },
     "user.school": {
-        en: "School"
+        en: "School",
+        si: "පාසල",
+        ta: "பள்ளி"
     },
     "user.name": {
-        en: "Name"
+        en: "Name",
+        si: "නම",
+        ta: "பெயர்"
     },
     "user.phone": {
-        en: "Phone Number"
+        en: "Phone Number",
+        si: "දුරකථන අංකය",
+        ta: "தொலைபேசி எண்"
     },
     "user.id_no": {
-        en: "National ID Number"
+        en: "National ID Number",
+        si: "ජාතික හැඳුනුම්පත අංකය",
+        ta: "தேசிய அடையாள எண்"
     },
     "user.password": {
-        en: "Password"
+        en: "Password",
+        si: "මුරපදය",
+        ta: "கடவுச்சொல்"
     },
+    "my_progress": {
+        en: "My Progress",
+        si: "මගේ ප්රගතිය",
+        ta: "என் முன்னேற்றம்"
+    },
+    "admin_page": {
+        en: "Admin Dashboard",
+        si: "පරිපාලක පිටුව",
+        ta: "நிர்வாக பக்கம்"
+    },
+    "you_are_admin": {
+        en: "You are an admin",
+        si: "ඔබ පරිපාලකයෙක්",
+        ta: "நீங்கள் ஒரு நிர்வாகி"
+    }
 }

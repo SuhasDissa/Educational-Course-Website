@@ -3,18 +3,19 @@
 
 	export let data;
 	let user = data.user;
+	import { t } from '$lib/i18n';
 </script>
 
 {#if user.role == 'admin'}
-	<div
-		class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg flex flex-row justify-between align-middle"
-	>
-		<h2 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">You are an admin</h2>
+	<div class="bg-slate-200 dark:bg-slate-800 p-10 flex flex-row justify-between align-middle">
+		<h2 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">
+			{$t('you_are_admin')}
+		</h2>
 		<a
 			href="/admin"
 			type="submit"
 			class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
-			>Admin Dashboard</a
+			>{$t('admin_page')}</a
 		>
 	</div>
 {/if}
@@ -24,16 +25,16 @@
 			{user.name}
 		</h1>
 		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose pt-4 sm:pt-8">
-			School : {user.school}
+			{$t('user.school')} : {user.school}
 		</h2>
 		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose pt-4 sm:pt-8">
-			Phone: {user.phone}
+			{$t('user.phone')} : {user.phone}
 		</h2>
 		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose pt-4 sm:pt-8">
-			ID No. : {user.id_no}
+			{$t('user.id_no')} : {user.id_no}
 		</h2>
 		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose pt-4 sm:pt-8">
-			Username : {user.username}
+			{$t('user.username')} : {user.username}
 		</h2>
 		<form class="pt-8" method="post" action="/logout">
 			<button
@@ -45,7 +46,7 @@
 	</div>
 	<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg">
 		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">
-			My progress
+			{$t('my_progress')}
 		</h1>
 		<ol class="space-y-4 w-full pt-8">
 			<li>
