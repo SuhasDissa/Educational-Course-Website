@@ -17,11 +17,12 @@ declare global {
 		type DatabaseUserAttributes = {
 			username: string
 			name: string
-			school:string
-			phone:string
-			id_no:string
+			school: string
+			phone: string
+			id_no: string
+			role: string
 		}
 	}
 }
 
-export {}
+export { }

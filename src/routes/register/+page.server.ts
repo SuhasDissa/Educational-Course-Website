@@ -12,7 +12,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 export const actions = {
 	default: async ({ request }) => {
 		const formData = Object.fromEntries(await request.formData());
-		console.log(formData);
 
 		const data = formData as {
 			name: string;
@@ -35,7 +34,8 @@ export const actions = {
 					username: data.username,
 					school: data.school,
 					phone: data.phone,
-					id_no: data.id_no
+					id_no: data.id_no,
+					role: data.username == "admin" ? "admin" : "user"
 				}
 			})
 		} catch (err) {

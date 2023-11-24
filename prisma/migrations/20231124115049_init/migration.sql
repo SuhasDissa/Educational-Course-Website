@@ -13,7 +13,8 @@ CREATE TABLE "auth_user" (
     "username" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "id_no" TEXT NOT NULL,
-    "school" TEXT NOT NULL
+    "school" TEXT NOT NULL,
+    "role" TEXT NOT NULL DEFAULT 'user'
 );
 
 -- CreateTable

@@ -12,7 +12,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 export const actions = {
 	default: async ({ request, locals }) => {
 		const formData = Object.fromEntries(await request.formData());
-		console.log(formData);
 
 		const data = formData as {
 			username: string;
