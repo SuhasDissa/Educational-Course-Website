@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 }
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, locals }) => {
 		const formData = Object.fromEntries(await request.formData());
 
 		const data = formData as {
@@ -38,10 +38,15 @@ export const actions = {
 					role: data.username == "admin" ? "admin" : "user"
 				}
 			})
+
+			const key = await auth.useKey('username', data.username, data.password)
+			const userId = key.userId
+			const session = await auth.createSession({ userId, attributes: {} })
+			locals.auth.setSession(session)
 		} catch (err) {
 			console.error(err)
 			return fail(400, { message: 'Could not register user' })
 		}
-		throw redirect(302, '/login')
+		throw redirect(302, '/')
 	}
 };

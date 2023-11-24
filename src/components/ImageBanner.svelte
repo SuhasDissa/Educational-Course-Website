@@ -5,14 +5,14 @@
 </script>
 
 <div
-	class="relative w-full h-96 rounded-xl overflow-hidden bg-contain bg-no-repeat bg-right duration-300"
+	class="relative w-full sm:h-96 h-[30rem] rounded-xl overflow-hidden bg-contain bg-no-repeat bg-bottom sm:bg-right duration-300"
 	style="background-image:url('{imageUrl}');"
 >
-	<div class="h-full w-full p-10 bg-gradient-to-r dark:from-slate-800 from-slate-200 from-60%">
-		<h1 class="text-slate-700 dark:text-slate-300 text-2xl sm:text-3xl md:text-4xl font-bold w-[60%]">
+	<div class="h-full w-full p-10 bg-gradient-to-b sm:bg-gradient-to-r dark:from-slate-800 from-slate-200 from-60%">
+		<h1 class="text-slate-700 dark:text-slate-300 text-2xl sm:text-3xl md:text-4xl font-bold sm:w-[60%]">
 			{title}
 		</h1>
-		<p class=" text-slate-600 text-lg sm:text-xl md:text-2xl font-bold max-w-prose pt-4 sm:pt-8  w-[60%]">
+		<p class=" text-slate-600 text-lg sm:text-xl md:text-2xl font-bold max-w-prose pt-4 sm:pt-8  sm:w-[60%]">
 			{description}
 		</p>
 	</div>

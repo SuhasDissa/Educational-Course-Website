@@ -5,7 +5,20 @@
 	let user = data.user;
 </script>
 
-<div class="mx-auto max-w-screen-xl px-8 py-20 grid grid-cols-2 gap-8">
+{#if user.role == 'admin'}
+	<div
+		class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg flex flex-row justify-between align-middle"
+	>
+		<h2 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">You are an admin</h2>
+		<a
+			href="/admin"
+			type="submit"
+			class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
+			>Admin Dashboard</a
+		>
+	</div>
+{/if}
+<div class="mx-auto max-w-screen-xl px-8 py-20 grid grid-cols-1 sm:grid-cols-2 gap-8">
 	<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg">
 		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-3xl font-bold">
 			{user.name}
@@ -34,7 +47,7 @@
 		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">
 			My progress
 		</h1>
-		<ol class="space-y-4 w-72 pt-8">
+		<ol class="space-y-4 w-full pt-8">
 			<li>
 				<ModuleProgress progress={2} name={'Module 1'} />
 			</li>
