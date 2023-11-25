@@ -62,7 +62,11 @@
 			{$t('practical_lesson')}
 		</h1>
 		<h2 class="text-slate-400 text-lg sm:text-xl md:text-3xl font-normal max-w-prose pt-4 sm:pt-8">
-			{$t('practical_not_completed')}
+			{#if user.progress?.practical}
+				{$t('practical_completed')}
+			{:else}
+				{$t('practical_not_completed')}
+			{/if}
 		</h2>
 	</div>
 	<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg">

@@ -47,6 +47,11 @@ export default {
         si: "බහුතල ඉගෙනුම් ක්‍රමවේදය පිළිබඳ මාර්ගගත ගුරු පුහුණු පාඨමාලාවට ඔබව සාදරයෙන් පිළිගනිමු",
         en: "Welcome to the Online Teacher Training Course on the Multi Level Teaching Methods", ta: "பல நிலை கற்பித்தல் முறைகள் குறித்த ஆன்லைன் ஆசிரியர் பயிற்சி வகுப்பிற்கு வருக"
     },
+    "all_modules": {
+        en: "All modules",
+        si: "සියලුම මොඩියුල",
+        ta: "அனைத்து தொகுதிகள்"
+    },
     "register_here": {
         en: "Register Here",
         si: "මෙහි ලියාපදිංචි වන්න",
@@ -109,7 +114,7 @@ export default {
     },
     "my_progress": {
         en: "My Progress",
-        si: "මගේ ප්රගතිය",
+        si: "මගේ ප්‍රගතිය",
         ta: "என் முன்னேற்றம்"
     },
     "admin_page": {
@@ -132,6 +137,11 @@ export default {
         si: "ප්‍රායෝගික පාඩම සම්පූර්ණ කර නැත",
         ta: "நடைமுறை பாடம் முடிக்கப்படவில்லை"
     },
+    "practical_completed": {
+        en: "Practical Lesson is completed",
+        si: "ප්‍රායෝගික පාඩම සම්පූර්ණයි",
+        ta: "நடைமுறைப் பாடம் நிறைவுற்றது"
+    },
     "certificate": {
         en: "Certificate",
         si: "සහතිකය",
@@ -141,5 +151,10 @@ export default {
         en: "View Certificate",
         si: "සහතිකය බලන්න",
         ta: "சான்றிதழைப் பார்க்கவும்"
-    }
+    },
+    "finish_module": {
+        en: "Finish Learning the Module",
+        si: "මොඩියුලය ඉගෙනීම අවසන් කරන්න",
+        ta: "தொகுதி கற்றலை முடிக்கவும்"
+    },
 }

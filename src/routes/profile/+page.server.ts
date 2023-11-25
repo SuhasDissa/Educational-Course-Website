@@ -3,7 +3,6 @@ import type { PageServerLoad } from './$types';
 import { prisma } from '$lib/server/prisma';
 import type { Module } from '$lib/server/types';
 import { modules } from '$lib/server/modules';
-import { t } from '$lib/i18n';
 
 
 export const load: PageServerLoad = async ({ locals }) => {
@@ -33,7 +32,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 			}
 		)
 	}
-	const progress = [pg.module1, pg.module1, pg.module1, pg.module1, pg.module1, pg.module1, pg.module1, pg.module1]
+	const progress = [pg.module1, pg.module2, pg.module3, pg.module4, pg.module5, pg.module6, pg.module7, pg.module8]
 
 	const updateProgress = (modules: Module[], progress: Boolean[]) => {
 		let incomplete = true

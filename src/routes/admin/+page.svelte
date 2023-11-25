@@ -3,6 +3,7 @@
 	let users = data.users;
 
 	import { t } from '$lib/i18n';
+	import StarProgress from '../../components/StarProgress.svelte';
 </script>
 
 <div class="mx-auto max-w-screen-xl px-8 py-8 flex flex-col justify-center content-center h-full">
@@ -18,10 +19,10 @@
 				<thead class="text-slate-700 bg-slate-50 dark:bg-slate-700 dark:text-slate-400">
 					<tr>
 						<th scope="col" class="px-6 py-3"> Name </th>
-						<th scope="col" class="px-6 py-3">Username </th>
 						<th scope="col" class="px-6 py-3"> School </th>
 						<th scope="col" class="px-6 py-3"> Phone No. </th>
-						<th scope="col" class="px-6 py-3"> National Id No. </th>
+						<th scope="col" class="px-6 py-3"> Modules </th>
+						<th scope="col" class="px-6 py-3"> Practical </th>
 						<th scope="col" class="px-6 py-3"> Role </th>
 						<th scope="col" class="px-6 py-3">
 							<span class="sr-only">Edit</span>
@@ -33,13 +34,17 @@
 						<tr
 							class="border-b dark:border-slate-700 font-medium text-slate-900 whitespace-nowrap dark:text-slate-100"
 						>
-							<th scope="row" class="px-6 py-4">
-								{user.name}
-							</th>
-							<td class="px-6 py-4"> {user.username} </td>
+							<td class="px-6 py-4"> {user.name} </td>
 							<td class="px-6 py-4"> {user.school} </td>
 							<td class="px-6 py-4"> {user.phone} </td>
-							<td class="px-6 py-4"> {user.id_no} </td>
+							<td class="px-6 py-4"> <StarProgress progress={user.progress} /> </td>
+							<td class="px-6 py-4">
+								{#if user.progress?.practical}
+									<span>✅</span>
+								{:else}
+									<span>❌</span>
+								{/if}
+							</td>
 							<td class="px-6 py-4">
 								{#if user.role == 'admin'}
 									<span

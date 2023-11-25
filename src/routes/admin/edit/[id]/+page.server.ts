@@ -11,6 +11,9 @@ export const load: PageServerLoad = async ({ params, locals }) => {
     const user = await prisma.authUser.findUnique({
         where: {
             id: params.id
+        },
+        include: {
+            progress: true
         }
     }
     )
@@ -25,22 +28,33 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 export const actions = {
     default: async ({ request }) => {
         const formData = Object.fromEntries(await request.formData());
-
         const data = formData as {
             id: string;
             name: string;
             username: string;
             role: string;
+            practical: string;
         };
 
         try {
-            await auth.updateUserAttributes(
-                data.id,
-                {
+            await prisma.authUser.update({
+                where: {
+                    id: data.id
+                },
+                data: {
                     name: data.name,
                     username: data.username,
                     role: data.role
-                })
+                }
+            })
+            await prisma.progress.update({
+                where: {
+                    userId: data.id
+                },
+                data: {
+                    practical: data.practical == "true"
+                }
+            })
         } catch (err) {
             console.error(err)
             return fail(400, { message: 'Could not update user' })

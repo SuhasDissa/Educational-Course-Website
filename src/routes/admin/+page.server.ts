@@ -19,7 +19,11 @@ export const load: PageServerLoad = async ({ locals }) => {
         throw redirect(302, '/')
     }
 
-    const users = prisma.authUser.findMany()
+    const users = prisma.authUser.findMany({
+        include: {
+            progress: true
+        }
+    })
 
     return {
         users: users
