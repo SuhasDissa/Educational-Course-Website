@@ -7,6 +7,11 @@
 	<form class="w-full max-w-xl" method="post" enctype="multipart/form-data">
 		<input value={user.id} name="id" type="hidden" required />
 		<div class="mb-6">
+			<h5 class="text-3xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
+				Edit User
+			</h5>
+		</div>
+		<div class="mb-6">
 			<label for="name" class="block mb-2 text-md font-bold text-slate-900 dark:text-slate-200"
 				>Name</label
 			>
