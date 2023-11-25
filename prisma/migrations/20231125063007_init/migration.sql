@@ -1,9 +1,17 @@
 -- CreateTable
-CREATE TABLE "Article" (
+CREATE TABLE "Progress" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "title" TEXT NOT NULL,
-    "content" TEXT NOT NULL,
-    "userId" TEXT NOT NULL
+    "userId" TEXT NOT NULL,
+    "module1" BOOLEAN NOT NULL DEFAULT false,
+    "module2" BOOLEAN NOT NULL DEFAULT false,
+    "module3" BOOLEAN NOT NULL DEFAULT false,
+    "module4" BOOLEAN NOT NULL DEFAULT false,
+    "module5" BOOLEAN NOT NULL DEFAULT false,
+    "module6" BOOLEAN NOT NULL DEFAULT false,
+    "module7" BOOLEAN NOT NULL DEFAULT false,
+    "module8" BOOLEAN NOT NULL DEFAULT false,
+    "practical" BOOLEAN NOT NULL DEFAULT false,
+    CONSTRAINT "Progress_userId_fkey" FOREIGN KEY ("userId") REFERENCES "auth_user" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -33,6 +41,9 @@ CREATE TABLE "auth_key" (
     "user_id" TEXT NOT NULL,
     CONSTRAINT "auth_key_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Progress_userId_key" ON "Progress"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "auth_user_id_key" ON "auth_user"("id");

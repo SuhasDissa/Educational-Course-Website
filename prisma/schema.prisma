@@ -10,11 +10,19 @@ datasource db {
     url      = "file:./dev.sqlite"
 }
 
-model Article {
-    id      Int    @id @default(autoincrement())
-    title   String
-    content String
-    userId  String
+model Progress {
+    id        Int      @id @default(autoincrement())
+    userId    String   @unique
+    user      AuthUser @relation(fields: [userId], references: [id])
+    module1   Boolean  @default(false)
+    module2   Boolean  @default(false)
+    module3   Boolean  @default(false)
+    module4   Boolean  @default(false)
+    module5   Boolean  @default(false)
+    module6   Boolean  @default(false)
+    module7   Boolean  @default(false)
+    module8   Boolean  @default(false)
+    practical Boolean  @default(false)
 }
 
 model AuthUser {
@@ -25,6 +33,7 @@ model AuthUser {
     id_no        String
     school       String
     role         String        @default("user")
+    progress     Progress?
     auth_session AuthSession[]
     auth_key     AuthKey[]
 

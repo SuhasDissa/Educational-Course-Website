@@ -1,7 +1,8 @@
 <script lang="ts">
-	export let progress: number;
-	export let name: string;
+	import type { Module } from '$lib/server/types';
 
+	export let module: Module;
+	let progress = module.progress;
 	let colors: string;
 	if (progress == 2) {
 		colors =
@@ -10,13 +11,19 @@
 		colors = 'text-blue-700 bg-blue-100  border-blue-300 dark:border-blue-800 dark:text-blue-400';
 	} else {
 		colors =
-			'text-slate-900 bg-slate-100 border-slate-300 dark:border-slate-700 dark:text-slate-400';
+			'text-slate-900 bg-slate-100 border-slate-300 dark:border-slate-700 dark:text-slate-400 cursor-default';
 	}
 </script>
 
-<div class="w-full p-4 rounded-lg dark:bg-slate-800 border {colors}" role="alert">
+<a
+	href={progress == 0 ? '#' : `/module/${module.id}`}
+	class="block w-full p-4 rounded-lg dark:bg-slate-800 border {colors}"
+>
 	<div class="flex items-center justify-between">
-		<h3 class="font-medium">{name}</h3>
+		<div class="">
+			<h3 class="font-bold">{module.name}</h3>
+			<h3 class="font-medium">{module.description}</h3>
+		</div>
 		{#if progress == 2}
 			<svg
 				class="w-4 h-4"
@@ -51,4 +58,4 @@
 			</svg>
 		{/if}
 	</div>
-</div>
+</a>

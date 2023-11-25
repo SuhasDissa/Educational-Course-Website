@@ -3,6 +3,7 @@
 
 	export let data;
 	let user = data.user;
+	let modules = data.modules;
 	import { t } from '$lib/i18n';
 </script>
 
@@ -24,16 +25,16 @@
 		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-3xl font-bold">
 			{user.name}
 		</h1>
-		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose pt-4 sm:pt-8">
+		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
 			{$t('user.school')} : {user.school}
 		</h2>
-		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose pt-4 sm:pt-8">
+		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
 			{$t('user.phone')} : {user.phone}
 		</h2>
-		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose pt-4 sm:pt-8">
+		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
 			{$t('user.id_no')} : {user.id_no}
 		</h2>
-		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose pt-4 sm:pt-8">
+		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
 			{$t('user.username')} : {user.username}
 		</h2>
 		<form class="pt-8" method="post" action="/logout">
@@ -49,30 +50,32 @@
 			{$t('my_progress')}
 		</h1>
 		<ol class="space-y-4 w-full pt-8">
-			<li>
-				<ModuleProgress progress={2} name={'Module 1'} />
-			</li>
-			<li>
-				<ModuleProgress progress={2} name={'Module 2'} />
-			</li>
-			<li>
-				<ModuleProgress progress={2} name={'Module 3'} />
-			</li>
-			<li>
-				<ModuleProgress progress={1} name={'Module 4'} />
-			</li>
-			<li>
-				<ModuleProgress progress={0} name={'Module 5'} />
-			</li>
-			<li>
-				<ModuleProgress progress={0} name={'Module 6'} />
-			</li>
-			<li>
-				<ModuleProgress progress={0} name={'Module 7'} />
-			</li>
-			<li>
-				<ModuleProgress progress={0} name={'Module 8'} />
-			</li>
+			{#each modules as module}
+				<li>
+					<ModuleProgress {module} />
+				</li>
+			{/each}
 		</ol>
+	</div>
+	<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg">
+		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">
+			{$t('practical_lesson')}
+		</h1>
+		<h2 class="text-slate-400 text-lg sm:text-xl md:text-3xl font-normal max-w-prose pt-4 sm:pt-8">
+			{$t('practical_not_completed')}
+		</h2>
+	</div>
+	<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg">
+		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">
+			{$t('certificate')}
+		</h1>
+		<div class="pt-8 w-full text-center">
+			<a
+				href="#"
+				type="submit"
+				class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
+				>{$t('view_certificate')}</a
+			>
+		</div>
 	</div>
 </div>

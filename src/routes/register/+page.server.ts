@@ -1,6 +1,7 @@
 import { auth } from '$lib/server/lucia'
 import { fail, redirect } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
+import { prisma } from '$lib/server/prisma'
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate()
@@ -38,9 +39,14 @@ export const actions = {
 					role: data.username == "admin" ? "admin" : "user"
 				}
 			})
-
 			const key = await auth.useKey('username', data.username, data.password)
 			const userId = key.userId
+
+			await prisma.progress.create({
+				data: {
+					userId: userId
+				}
+			})
 			const session = await auth.createSession({ userId, attributes: {} })
 			locals.auth.setSession(session)
 		} catch (err) {

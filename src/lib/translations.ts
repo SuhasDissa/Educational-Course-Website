@@ -121,5 +121,25 @@ export default {
         en: "You are an admin",
         si: "ඔබ පරිපාලකයෙක්",
         ta: "நீங்கள் ஒரு நிர்வாகி"
+    },
+    "practical_lesson": {
+        en: "Practical Lesson",
+        si: "ප්‍රායෝගික පාඩම",
+        ta: "நடைமுறை பாடம்"
+    },
+    "practical_not_completed": {
+        en: "Practical Lesson is Not completed",
+        si: "ප්‍රායෝගික පාඩම සම්පූර්ණ කර නැත",
+        ta: "நடைமுறை பாடம் முடிக்கப்படவில்லை"
+    },
+    "certificate": {
+        en: "Certificate",
+        si: "සහතිකය",
+        ta: "சான்றிதழ்"
+    },
+    "view_certificate": {
+        en: "View Certificate",
+        si: "සහතිකය බලන්න",
+        ta: "சான்றிதழைப் பார்க்கவும்"
     }
 }
