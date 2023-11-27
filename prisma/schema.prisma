@@ -23,6 +23,8 @@ model Progress {
     module7   Boolean  @default(false)
     module8   Boolean  @default(false)
     practical Boolean  @default(false)
+
+    @@map("progress")
 }
 
 model AuthUser {

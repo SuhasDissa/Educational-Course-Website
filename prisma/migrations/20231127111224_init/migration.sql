@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "Progress" (
+CREATE TABLE "progress" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "userId" TEXT NOT NULL,
     "module1" BOOLEAN NOT NULL DEFAULT false,
@@ -11,7 +11,7 @@ CREATE TABLE "Progress" (
     "module7" BOOLEAN NOT NULL DEFAULT false,
     "module8" BOOLEAN NOT NULL DEFAULT false,
     "practical" BOOLEAN NOT NULL DEFAULT false,
-    CONSTRAINT "Progress_userId_fkey" FOREIGN KEY ("userId") REFERENCES "auth_user" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "progress_userId_fkey" FOREIGN KEY ("userId") REFERENCES "auth_user" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -43,7 +43,7 @@ CREATE TABLE "auth_key" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Progress_userId_key" ON "Progress"("userId");
+CREATE UNIQUE INDEX "progress_userId_key" ON "progress"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "auth_user_id_key" ON "auth_user"("id");
