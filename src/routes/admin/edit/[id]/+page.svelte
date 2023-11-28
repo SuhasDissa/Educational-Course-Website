@@ -25,6 +25,32 @@
 			/>
 		</div>
 		<div class="mb-6">
+			<label for="school" class="block mb-2 text-md font-bold text-slate-900 dark:text-slate-200"
+				>School</label
+			>
+			<input
+				value={user.school}
+				name="school"
+				id="school"
+				class="bg-slate-50 border border-slate-300 text-slate-900 text-md rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500"
+				placeholder=""
+				required
+			/>
+		</div>
+		<div class="mb-6">
+			<label for="phone" class="block mb-2 text-md font-bold text-slate-900 dark:text-slate-200"
+				>Phone</label
+			>
+			<input
+				value={user.phone}
+				name="phone"
+				id="phone"
+				class="bg-slate-50 border border-slate-300 text-slate-900 text-md rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500"
+				placeholder=""
+				required
+			/>
+		</div>
+		<div class="mb-6">
 			<label for="username" class="block mb-2 text-md font-bold text-slate-900 dark:text-slate-200"
 				>National ID Card No</label
 			>

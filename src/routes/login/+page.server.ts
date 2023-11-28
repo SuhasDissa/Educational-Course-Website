@@ -5,7 +5,7 @@ import type { PageServerLoad } from './$types'
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate()
 	if (session) {
-		throw redirect(302, '/')
+		throw redirect(302, '/profile')
 	}
 }
 
@@ -27,6 +27,6 @@ export const actions = {
 			console.error(err)
 			return fail(400, { message: 'Could not login user.' })
 		}
-		throw redirect(302, '/')
+		throw redirect(302, '/profile')
 	}
 };

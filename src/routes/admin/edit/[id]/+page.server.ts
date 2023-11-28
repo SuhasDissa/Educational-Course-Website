@@ -32,6 +32,8 @@ export const actions = {
             id: string;
             name: string;
             username: string;
+            school: string;
+            phone: string;
             role: string;
             practical: string;
         };
@@ -44,6 +46,8 @@ export const actions = {
                 data: {
                     name: data.name,
                     username: data.username.toUpperCase(),
+                    school: data.school,
+                    phone: data.phone,
                     role: data.role
                 }
             })
