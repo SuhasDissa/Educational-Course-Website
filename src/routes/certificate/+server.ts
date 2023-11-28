@@ -1,7 +1,8 @@
 import { PDFDocument } from 'pdf-lib'
-import { error, redirect, type RequestHandler } from '@sveltejs/kit'
+import { error, redirect, text, type RequestHandler } from '@sveltejs/kit'
 import { prisma } from '$lib/server/prisma'
 import fs from 'node:fs'
+import QRCode from 'qrcode'
 
 export const GET: RequestHandler = async ({ locals }) => {
     const session = await locals.auth.validate()
@@ -24,6 +25,7 @@ export const GET: RequestHandler = async ({ locals }) => {
         throw redirect(302, '/profile')
     }
 
+    const progressUrl = `https://uva-edu.onrender.com/progress/${user.id}`
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString();
     const filePath = './static/files/certificate.pdf';
@@ -31,6 +33,18 @@ export const GET: RequestHandler = async ({ locals }) => {
     const existingPdfBytes = Buffer.from(fileBuffer);
 
     const pdfDoc = await PDFDocument.load(existingPdfBytes)
+
+    const firstPage = pdfDoc.getPage(0)
+
+    const qrImageBuffer = await QRCode.toBuffer(progressUrl)
+    const image = await pdfDoc.embedPng(qrImageBuffer)
+
+    firstPage.drawImage(image, {
+        x: 650,
+        y: 230,
+        width: 80,
+        height: 80
+    })
 
     const form = pdfDoc.getForm()
 

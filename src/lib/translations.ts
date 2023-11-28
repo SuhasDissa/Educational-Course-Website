@@ -117,6 +117,11 @@ export default {
         si: "මගේ ප්‍රගතිය",
         ta: "என் முன்னேற்றம்"
     },
+    "progress": {
+        en: "Progress",
+        si: "ප්‍රගතිය",
+        ta: "முன்னேற்றம்"
+    },
     "admin_page": {
         en: "Admin Dashboard",
         si: "පරිපාලක පිටුව",
