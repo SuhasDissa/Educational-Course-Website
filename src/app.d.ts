@@ -19,7 +19,6 @@ declare global {
 			name: string
 			school: string
 			phone: string
-			id_no: string
 			role: string
 		}
 	}

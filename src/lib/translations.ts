@@ -142,6 +142,11 @@ export default {
         si: "ප්‍රායෝගික පාඩම සම්පූර්ණයි",
         ta: "நடைமுறைப் பாடம் நிறைவுற்றது"
     },
+    "practical_for_certificate": {
+        en: "Complete the practical lesson to get the certificate",
+        si: "සහතිකය ලබා ගැනීම සඳහා ප්‍රායෝගික පාඩම සම්පූර්ණ කරන්න",
+        ta: "சான்றிதழைப் பெற நடைமுறைப் பாடத்தை முடிக்கவும்"
+    },
     "certificate": {
         en: "Certificate",
         si: "සහතිකය",

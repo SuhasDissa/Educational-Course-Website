@@ -18,7 +18,7 @@
 				{$t('subtitle')}
 			</h2>
 		</div>
-		<img class="h-32 object-contain hidden sm:block" src="images/unicef.png" alt="" srcset="" />
+		<img class="h-32 object-contain hidden sm:block" src="images/unicef2.png" alt="" srcset="" />
 	</section>
 	<section class="pt-10">
 		<HomeCarousel />

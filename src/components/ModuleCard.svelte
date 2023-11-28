@@ -17,7 +17,7 @@
 </script>
 
 <a
-	href={progress == 0 ? '#' : `/module/${module.id}`}
+	href={progress == 0 ? '#' : `${module.url}`}
 	class="flex flex-col max-w-sm rounded-lg drop-shadow duration-100 dark:bg-slate-800 overflow-hidden border {colors}"
 >
 	<div class="p-6 w-full flex flex-row justify-between">

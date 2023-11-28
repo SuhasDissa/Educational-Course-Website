@@ -19,7 +19,6 @@ export const actions = {
 			username: string;
 			password: string;
 			phone: string;
-			id_no: string;
 			school: string;
 		};
 
@@ -27,19 +26,18 @@ export const actions = {
 			await auth.createUser({
 				key: {
 					providerId: 'username',
-					providerUserId: data.username,
+					providerUserId: data.username.toUpperCase(),
 					password: data.password
 				},
 				attributes: {
 					name: data.name,
-					username: data.username,
+					username: data.username.toUpperCase(),
 					school: data.school,
 					phone: data.phone,
-					id_no: data.id_no,
-					role: data.username == "admin" ? "admin" : "user"
+					role: data.username.toLowerCase() == "admin" ? "admin" : "user"
 				}
 			})
-			const key = await auth.useKey('username', data.username, data.password)
+			const key = await auth.useKey('username', data.username.toUpperCase(), data.password)
 			const userId = key.userId
 
 			await prisma.progress.create({

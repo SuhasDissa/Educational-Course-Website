@@ -26,17 +26,29 @@
 			{user.name}
 		</h1>
 		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
-			{$t('user.school')} : {user.school}
+			{$t('user.school')}
 		</h2>
+		<p
+			class="text-slate-500 dark:text-slate-300 text-lg sm:text-xl md:text-3xl max-w-prose pt-4 sm:pt-8"
+		>
+			{user.school}
+		</p>
 		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
-			{$t('user.phone')} : {user.phone}
+			{$t('user.phone')}
 		</h2>
+		<p
+			class="text-slate-500 dark:text-slate-300 text-lg sm:text-xl md:text-3xl max-w-prose pt-4 sm:pt-8"
+		>
+			{user.phone}
+		</p>
 		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
-			{$t('user.id_no')} : {user.id_no}
+			{$t('user.id_no')}
 		</h2>
-		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
-			{$t('user.username')} : {user.username}
-		</h2>
+		<p
+			class="text-slate-500 dark:text-slate-300 text-lg sm:text-xl md:text-3xl max-w-prose pt-4 sm:pt-8"
+		>
+			{user.username}
+		</p>
 		<form class="pt-8" method="post" action="/logout">
 			<button
 				type="submit"
@@ -73,12 +85,20 @@
 		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">
 			{$t('certificate')}
 		</h1>
-		<div class="pt-8 w-full text-center">
-			<a
-				href="/certificate"
-				class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
-				>{$t('view_certificate')}</a
+		{#if user.progress?.practical}
+			<div class="pt-8 w-full text-center">
+				<a
+					href="/certificate"
+					class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
+					>{$t('view_certificate')}</a
+				>
+			</div>
+		{:else}
+			<h2
+				class="text-slate-400 text-lg sm:text-xl md:text-3xl font-normal max-w-prose pt-4 sm:pt-8"
 			>
-		</div>
+				{$t('practical_for_certificate')}
+			</h2>
+		{/if}
 	</div>
 </div>

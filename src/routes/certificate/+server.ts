@@ -11,10 +11,17 @@ export const GET: RequestHandler = async ({ locals }) => {
     const user = await prisma.authUser.findUnique({
         where: {
             id: session.user.userId
+        },
+        include: {
+            progress: true
         }
     })
     if (!user) {
         throw error(404, 'User not found')
+    }
+
+    if (!user.progress?.practical) {
+        throw redirect(302, '/profile')
     }
 
     const currentDate = new Date();
@@ -29,7 +36,7 @@ export const GET: RequestHandler = async ({ locals }) => {
 
     form.getTextField('name').setText(user.name);
     form.getTextField('school').setText(user.school);
-    form.getTextField('id').setText(user.id_no);
+    form.getTextField('id').setText(user.username);
     form.getTextField('date').setText(formattedDate);
 
     form.flatten()

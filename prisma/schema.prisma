@@ -32,7 +32,6 @@ model AuthUser {
     name         String
     username     String        @unique
     phone        String
-    id_no        String
     school       String
     role         String        @default("user")
     progress     Progress?

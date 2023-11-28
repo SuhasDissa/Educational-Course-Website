@@ -19,7 +19,7 @@ export const actions = {
 		};
 
 		try {
-			const key = await auth.useKey('username', data.username, data.password)
+			const key = await auth.useKey('username', data.username.toUpperCase(), data.password)
 			const userId = key.userId
 			const session = await auth.createSession({ userId, attributes: {} })
 			locals.auth.setSession(session)

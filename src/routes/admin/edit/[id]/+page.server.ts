@@ -43,7 +43,7 @@ export const actions = {
                 },
                 data: {
                     name: data.name,
-                    username: data.username,
+                    username: data.username.toUpperCase(),
                     role: data.role
                 }
             })

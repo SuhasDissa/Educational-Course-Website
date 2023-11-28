@@ -6,12 +6,12 @@
 	<form class="w-full max-w-xl" method="post" enctype="multipart/form-data">
 		<div class="mb-6">
 			<label for="username" class="block mb-2 text-sm font-bold text-slate-900 dark:text-slate-200"
-				>{$t('user.username')}</label
+				>{$t('user.id_no')}</label
 			>
 			<input
 				name="username"
 				id="username"
-				class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500"
+				class="bg-slate-50 border border-slate-300 uppercase text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500"
 				placeholder=""
 				required
 			/>

@@ -33,14 +33,14 @@
 					<NavMenuItem name={$t('home')} path={'/'} />
 				</li>
 				<li>
-					<NavMenuItem name={$t('profile')} path={'/profile'} />
+					<NavMenuItem name={$t('my_progress')} path={'/profile'} />
 				</li>
 				<li>
 					<NavMenuItem name={$t('modules')} path={'/modules'} />
 				</li>
-				<li>
+				<!-- <li>
 					<NavMenuItem name={$t('about')} path={'/about'} />
-				</li>
+				</li> -->
 				<li>
 					<select
 						class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500 font-bold"
@@ -76,7 +76,7 @@
 		</li>
 		<li>
 			<NavMenuItem
-				name={$t('profile')}
+				name={$t('my_progress')}
 				path={'/profile'}
 				on:click={() => {
 					open = false;
@@ -92,7 +92,7 @@
 				}}
 			/>
 		</li>
-		<li>
+		<!-- <li>
 			<NavMenuItem
 				name={$t('about')}
 				path={'/about'}
@@ -100,6 +100,16 @@
 					open = false;
 				}}
 			/>
+		</li> -->
+		<li>
+			<select
+				class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500 font-bold"
+				bind:value={$locale}
+			>
+				{#each locales as l}
+					<option value={l.id}>{l.name}</option>
+				{/each}
+			</select>
 		</li>
 	</ul>
 </aside>
