@@ -1,5 +1,11 @@
 <script lang="ts">
 	import type { Module } from '$lib/server/types';
+	import { locale } from '$lib/i18n';
+	let loc = 'si';
+
+	locale.subscribe((locale) => {
+		loc = locale;
+	});
 
 	export let module: Module;
 	let progress = module.progress;
@@ -17,7 +23,7 @@
 </script>
 
 <a
-	href={progress == 0 ? '#' : `${module.url}`}
+	href={progress == 0 ? '#' : `${module.url[loc]}`}
 	class="flex flex-col max-w-sm rounded-lg drop-shadow duration-100 dark:bg-slate-800 overflow-hidden border {colors}"
 >
 	<div class="p-6 w-full flex flex-row justify-between">
@@ -61,6 +67,6 @@
 	<p
 		class="grow p-6 max-h-48 overflow-hidden font-normal text-slate-500 dark:text-slate-400 text-lg sm:text-xl"
 	>
-		{module.description}
+		{module.description[loc]}
 	</p>
 </a>

@@ -5,7 +5,7 @@ export default {
     },
     "subtitle": {
         si: "බහුතල ඉගෙනුම් ක්‍රම වේදය පිළිබද මාර්ගගත ගුරු පුහුණු පාඨමාලාව",
-        en: "Online Teacher Training course on Multi Level Teaching Methods", ta: "பல நிலை கற்பித்தல் முறைகள் குறித்த ஆன்லைன் ஆசிரியர் பயிற்சி வகுப்பு"
+        en: "Online Teacher Training course on Multi Level Teaching Methods", ta: "பல் மட்ட கற்பித்தல் முறைகள் குறித்த நிகழ்நிலை ஆசிரியர் பயிற்சி வகுப்பு"
     },
     "home": {
         si: "මුල් පිටුව",
@@ -28,8 +28,8 @@ export default {
         en: "Our Mission", ta: "எங்கள் நோக்கம்"
     },
     "home.mission_description": {
-        si: "යමබර හා පුළුල් අධ්‍යාපන ක්‍රියාවලියක් සම්පාදනය කිරීම තුළින් ඌව පළාතේ විශිෂ්ට දරු පරපුරක් බිහීකිරීම සදහා අධ්‍යාපන ක්ෂේත්‍රයේ සියලු භෞතික,මානව හා මුල්‍ය සම්පත් කාර්යක්ෂමව හා ඵලදායී ලෙස මෙහෙයවීමයි.",
-        en: "The provision of a mature and wide educational process by providing a great educational process, all physical, human and financial resources in the education sector efficiently and effectively handled.", ta: "கல்வித் துறையில் ஒரு சிறந்த கல்வி செயல்முறையை வழங்குவதன் மூலம் முதிர்ச்சியடைந்த மற்றும் பரந்த கல்வி செயல்முறையை வழங்குவதன் மூலம் திறமையாகவும் திறமையாகவும் கையாளப்படுகிறது."
+        si: "සමබර හා පුළුල් අධ්‍යාපන ක්‍රියාවලියක් සම්පාදනය කිරීම තුළින් ඌව පළාතේ විශිෂ්ට දරු පරපුරක් බිහීකිරීම සදහා අධ්‍යාපන ක්ෂේත්‍රයේ සියලු භෞතික,මානව හා මුල්‍ය සම්පත් කාර්යක්ෂමව හා ඵලදායී ලෙස මෙහෙයවීමයි.",
+        en: "The provision of a mature and wide educational process by providing a great educational process, all physical, human and financial resources in the education sector efficiently and effectively handled.", ta: "கல்வித் துறையில் ஒரு சிறந்த கல்வி செயல்முறையை வழங்குவதன் மூலம் முதிர்ச்சியடைந்த மற்றும் பரந்த கல்வி செயல்முறையை வழங்குவதன் மூலம் திறமையாகவும் கையாளப்படுகிறது."
     },
     "home.vision": {
         si: "අපගේ දැක්ම",
@@ -81,6 +81,11 @@ export default {
         en: "Already have an Account?",
         si: "දැනටමත් ගිණුමක් තිබේද?",
         ta: "ஏற்கனவே ஒரு கணக்கு உள்ளதா?"
+    },
+    "need_account": {
+        en: "You need an account to continue",
+        si: "ඉදිරියට යාමට ඔබට ගිණුමක් අවශ්‍ය වේ",
+        ta: "தொடர உங்களுக்கு கணக்கு தேவை"
     },
     "user.username": {
         en: "Username",

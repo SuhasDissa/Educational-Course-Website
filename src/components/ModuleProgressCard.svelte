@@ -1,5 +1,11 @@
 <script lang="ts">
 	import type { Module } from '$lib/server/types';
+	import { locale } from '$lib/i18n';
+	let loc = 'si';
+
+	locale.subscribe((locale) => {
+		loc = locale;
+	});
 
 	export let module: Module;
 	let progress = module.progress;
@@ -17,7 +23,7 @@
 	<div class="flex items-center justify-between">
 		<div class="">
 			<h3 class="font-bold">{module.name}</h3>
-			<h3 class="font-medium">{module.description}</h3>
+			<h3 class="font-medium">{module.description[loc]}</h3>
 		</div>
 		{#if progress == 2}
 			<svg

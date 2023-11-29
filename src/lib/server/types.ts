@@ -1,7 +1,15 @@
 export interface Module {
 	id: number;
-	url: string;
+	url: {
+		si: string,
+		en: string,
+		ta: string
+	};
 	name: string;
-	description: string,
+	description: {
+		si: string,
+		en: string,
+		ta: string
+	};
 	progress: number
 }
