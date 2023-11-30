@@ -49,13 +49,20 @@
 		>
 			{user.username}
 		</p>
-		<form class="pt-8" method="post" action="/logout">
-			<button
-				type="submit"
+		<div class="pt-8 flex flex-row gap-8">
+			<form method="post" action="/logout">
+				<button
+					type="submit"
+					class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
+					>Logout</button
+				>
+			</form>
+			<a
+				href="/profile/edit/{user.id}"
 				class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
-				>Logout</button
+				>Edit</a
 			>
-		</form>
+		</div>
 	</div>
 	<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg">
 		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">
