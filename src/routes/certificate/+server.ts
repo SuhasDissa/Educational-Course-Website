@@ -4,6 +4,11 @@ import { prisma } from '$lib/server/prisma'
 import fs from 'node:fs'
 import QRCode from 'qrcode'
 
+function replaceNonASCII(str: string) {
+    return str.replace(/[^\x00-\x7F]/g, "?");
+}
+
+
 export const GET: RequestHandler = async ({ locals }) => {
     const session = await locals.auth.validate()
     if (!session) {
@@ -48,9 +53,9 @@ export const GET: RequestHandler = async ({ locals }) => {
 
     const form = pdfDoc.getForm()
 
-    form.getTextField('name').setText(user.name);
-    form.getTextField('school').setText(user.school);
-    form.getTextField('id').setText(user.username);
+    form.getTextField('name').setText(replaceNonASCII(user.name));
+    form.getTextField('school').setText(replaceNonASCII(user.school));
+    form.getTextField('id').setText(replaceNonASCII(user.username));
     form.getTextField('date').setText(formattedDate);
 
     form.flatten()
