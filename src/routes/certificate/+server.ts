@@ -1,10 +1,12 @@
-import { PDFDocument } from 'pdf-lib'
+import { PDFDocument, StandardFonts } from 'pdf-lib'
 import { error, redirect, type RequestHandler } from '@sveltejs/kit'
 import { prisma } from '$lib/server/prisma'
 import fs from 'node:fs'
 import QRCode from 'qrcode'
-import fontkit from '@pdf-lib/fontkit'
 
+function replaceNonASCII(str: string) {
+    return str.replace(/[^\x00-\x7F]/g, "?");
+}
 
 export const GET: RequestHandler = async ({ locals }) => {
     const session = await locals.auth.validate()
@@ -32,16 +34,10 @@ export const GET: RequestHandler = async ({ locals }) => {
     const formattedDate = currentDate.toLocaleDateString();
     const filePath = './static/files/certificate.pdf';
     const fileBuffer = fs.readFileSync(filePath);
-    const existingPdfBytes = Buffer.from(fileBuffer);
 
-    const fontPath = './static/files/NotoSansSinhalaTamil.ttf';
-    const fontFileBuffer = fs.readFileSync(fontPath);
-    const existingFontBytes = Buffer.from(fontFileBuffer);
+    const pdfDoc = await PDFDocument.load(fileBuffer)
 
-    const pdfDoc = await PDFDocument.load(existingPdfBytes)
-    pdfDoc.registerFontkit(fontkit)
-
-    const notoFont = await pdfDoc.embedFont(existingFontBytes)
+    const notoFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold)
 
     const firstPage = pdfDoc.getPage(0)
 
@@ -64,9 +60,9 @@ export const GET: RequestHandler = async ({ locals }) => {
 
     form.updateFieldAppearances(notoFont)
 
-    form.getTextField('name').setText(user.name);
-    form.getTextField('school').setText(user.school);
-    form.getTextField('id').setText(user.username);
+    form.getTextField('name').setText(replaceNonASCII(user.name));
+    form.getTextField('school').setText(replaceNonASCII(user.school));
+    form.getTextField('id').setText(replaceNonASCII(user.username));
     form.getTextField('date').setText(formattedDate);
 
     form.flatten()
