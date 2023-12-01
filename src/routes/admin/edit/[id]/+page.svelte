@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let data;
 	let user = data.user;
+	import { t } from '$lib/i18n';
 </script>
 
 <div class="flex justify-center content-center w-full pb-16 px-8 pt-16 sm:pt-8">
@@ -11,9 +12,15 @@
 				Edit User
 			</h5>
 		</div>
+		<div
+			class="p-4 mb-4 text-md text-yellow-800 rounded-lg bg-slate-50 dark:bg-slate-800 dark:text-yellow-400"
+			role="alert"
+		>
+			{$t('use_english')}
+		</div>
 		<div class="mb-6">
 			<label for="name" class="block mb-2 text-md font-bold text-slate-900 dark:text-slate-200"
-				>Name</label
+				>{$t('user.name')}</label
 			>
 			<input
 				value={user.name}
@@ -26,7 +33,7 @@
 		</div>
 		<div class="mb-6">
 			<label for="school" class="block mb-2 text-md font-bold text-slate-900 dark:text-slate-200"
-				>School</label
+				>{$t('user.school')}</label
 			>
 			<input
 				value={user.school}
@@ -39,7 +46,7 @@
 		</div>
 		<div class="mb-6">
 			<label for="phone" class="block mb-2 text-md font-bold text-slate-900 dark:text-slate-200"
-				>Phone</label
+				>{$t('user.phone')}</label
 			>
 			<input
 				value={user.phone}
@@ -52,7 +59,7 @@
 		</div>
 		<div class="mb-6">
 			<label for="username" class="block mb-2 text-md font-bold text-slate-900 dark:text-slate-200"
-				>National ID Card No</label
+				>{$t('user.id_no')}</label
 			>
 			<input
 				value={user.username}

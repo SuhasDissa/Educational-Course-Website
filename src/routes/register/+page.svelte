@@ -4,6 +4,12 @@
 
 <div class="flex justify-center content-center w-full pb-16 px-8 pt-16 sm:pt-8">
 	<form class="w-full max-w-xl" method="post" enctype="multipart/form-data">
+		<div
+			class="p-4 mb-4 text-md text-yellow-800 rounded-lg bg-slate-50 dark:bg-slate-800 dark:text-yellow-400"
+			role="alert"
+		>
+			{$t('use_english')}
+		</div>
 		<div class="mb-6">
 			<label for="name" class="block mb-2 text-sm font-bold text-slate-900 dark:text-slate-200"
 				>{$t('user.name')}</label
