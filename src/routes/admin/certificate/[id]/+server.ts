@@ -5,26 +5,18 @@ import fs from 'node:fs'
 import QRCode from 'qrcode'
 import fontkit from '@pdf-lib/fontkit'
 
-
-export const GET: RequestHandler = async ({ locals }) => {
+export const GET: RequestHandler = async ({ locals, params }) => {
     const session = await locals.auth.validate()
     if (!session) {
         throw redirect(302, '/')
     }
     const user = await prisma.authUser.findUnique({
         where: {
-            id: session.user.userId
-        },
-        include: {
-            progress: true
+            id: params.id
         }
     })
     if (!user) {
         throw error(404, 'User not found')
-    }
-
-    if (!user.progress?.practical) {
-        throw redirect(302, '/profile')
     }
 
     const progressUrl = `https://uva-edu.onrender.com/progress/${user.id}`

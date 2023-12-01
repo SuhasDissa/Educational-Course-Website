@@ -6,7 +6,7 @@
 	import StarProgress from '../../components/StarProgress.svelte';
 </script>
 
-<div class="mx-auto max-w-screen-xl px-8 py-8 flex flex-col justify-center content-center h-full">
+<div class="mx-auto px-8 py-8 flex flex-col justify-center content-center h-full">
 	<h1 class="p-6 text-4xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
 		{$t('admin_page')}
 	</h1>
@@ -65,6 +65,13 @@
 								>
 									<span class="material-symbols-rounded"> edit </span>
 									Edit User
+								</a>
+								<a
+									href="/admin/certificate/{user.id}"
+									class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+								>
+									<span class="material-symbols-rounded"> license </span>
+									View Certificate
 								</a>
 							</td>
 						</tr>
