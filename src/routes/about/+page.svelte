@@ -20,7 +20,7 @@
 			<td colspan="2" class="text-slate-400 text-xl sm:text-2xl md:text-4xl p-4"> අධීක්ෂණය </td>
 		</tr>
 		<tr>
-			<td class="p-4"> A.H. සේනාධීර මයා </td>
+			<td class="p-4"> A.H.R. අමරදාස මයා </td>
 			<td class="p-4"> ඌව පළාත් අධ්‍යාපන අධ්‍යක්ෂ </td>
 		</tr>
 		<tr>
