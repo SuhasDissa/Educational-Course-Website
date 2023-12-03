@@ -24,7 +24,7 @@
 	<section class="pt-10 flex flex-col">
 		<div class="flex flex-row gap-8">
 			<h5 class="p-6 text-2xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
-				Registered Users
+				Registered Users ({users.length})
 			</h5>
 			<div class="sm:flex flex-row items-center hidden">
 				<input
