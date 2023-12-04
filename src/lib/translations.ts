@@ -93,9 +93,9 @@ export default {
         ta: "பயனர் பெயர்"
     },
     "user.school": {
-        en: "School",
-        si: "පාසල",
-        ta: "பள்ளி"
+        en: "School / Institute",
+        si: "පාසල / ආයතනය",
+        ta: "பள்ளி / நிறுவனம்"
     },
     "user.name": {
         en: "Name",
