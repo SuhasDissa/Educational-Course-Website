@@ -13,10 +13,10 @@ jobs:
       - name: Use pg-dump action
         uses: tj-actions/pg-dump@v3
         with:
-          database_url: ${{ secrets.DATABASE_URL }}
-          output_file: dump_$(date +%Y-%m-%d_%H-%M).sql
+          database_url: "${{ secrets.DATABASE_URL }}"
+          path: "dump_$(date +%Y-%m-%d_%H-%M).sql"
           postgresql_version: "16"
-          flags: "--no-acl --no-owner"
+          options: "--no-acl --no-owner"
       - name: Upload dump as artifact
         uses: actions/upload-artifact@v3
         with:
