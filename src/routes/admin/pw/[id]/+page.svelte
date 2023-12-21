@@ -6,11 +6,23 @@
 
 <div class="flex justify-center content-center w-full pb-16 px-8 pt-16 sm:pt-8">
 	<form class="w-full max-w-xl" method="post" enctype="multipart/form-data">
-		<input value={user.username} name="username" type="hidden" required />
 		<div class="mb-6">
 			<h5 class="text-3xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
 				Change Password
 			</h5>
+		</div>
+		<div class="mb-6">
+			<label for="username" class="block mb-2 text-md font-bold text-slate-900 dark:text-slate-200"
+				>{$t('user.id_no')}</label
+			>
+			<input
+				value={user.username}
+				name="username"
+				id="username"
+				class="bg-slate-50 border border-slate-300 text-slate-900 uppercase text-md rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500"
+				placeholder=""
+				required
+			/>
 		</div>
 		<div class="mb-6">
 			<label for="password" class="block mb-2 text-sm font-bold text-slate-900 dark:text-slate-200"

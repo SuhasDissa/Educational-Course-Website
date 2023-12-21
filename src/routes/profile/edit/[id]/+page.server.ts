@@ -30,7 +30,6 @@ export const actions = {
         const data = formData as {
             id: string;
             name: string;
-            username: string;
             school: string;
             phone: string;
         };
@@ -42,7 +41,6 @@ export const actions = {
                 },
                 data: {
                     name: data.name,
-                    username: data.username.toUpperCase(),
                     school: data.school,
                     phone: data.phone,
                 }
