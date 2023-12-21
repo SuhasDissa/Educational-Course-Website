@@ -21,6 +21,7 @@
 				id="username"
 				class="bg-slate-50 border border-slate-300 text-slate-900 uppercase text-md rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500"
 				placeholder=""
+				disabled
 				required
 			/>
 		</div>

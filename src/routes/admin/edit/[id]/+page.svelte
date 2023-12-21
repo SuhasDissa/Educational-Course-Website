@@ -4,7 +4,7 @@
 	import { t } from '$lib/i18n';
 </script>
 
-<div class="flex justify-center content-center w-full pb-16 px-8 pt-16 sm:pt-8">
+<div class="flex items-center flex-col content-center w-full pb-16 px-8 pt-16 sm:pt-8">
 	<form class="w-full max-w-xl" method="post" enctype="multipart/form-data">
 		<input value={user.id} name="id" type="hidden" required />
 		<div class="mb-6">
@@ -162,4 +162,21 @@
 			>Save</button
 		>
 	</form>
+	<div class="w-full max-w-xl mt-20">
+		<div class="mb-6">
+			<h5 class="text-3xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
+				Advanced Options
+			</h5>
+		</div>
+		<a
+			href="/admin/pw/{user.id}"
+			class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
+			>Change Password</a
+		>
+		<a
+			href="/admin/delete/{user.id}"
+			class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+			>Delete Usesr</a
+		>
+	</div>
 </div>
