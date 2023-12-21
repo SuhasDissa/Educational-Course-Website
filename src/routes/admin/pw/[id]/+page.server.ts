@@ -31,7 +31,6 @@ export const actions = {
         };
 
         try {
-            const user = await prisma.authUser.findUnique
             auth.updateKeyPassword("username", data.username.toUpperCase(), data.password)
         } catch (err) {
             console.error(err)
