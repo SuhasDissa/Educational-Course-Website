@@ -1,20 +1,20 @@
 <script lang="ts">
 	export let data;
-	let users = data.users;
+	let users: AuthUser[];
+	let count: number;
+	let query: string | null;
+	let page: number;
+	let rowsPerPage: number;
+
+	$: users = data.users;
+	$: count = data.count;
+	$: query = data.query;
+	$: page = data.page;
+	$: rowsPerPage = data.rowsPerPage;
 
 	import { t } from '$lib/i18n';
+	import type { AuthUser } from '@prisma/client';
 	import StarProgress from '../../components/StarProgress.svelte';
-
-	let searchTerm = '';
-	let filteredUsers = [];
-
-	function searchAdditives() {
-		filteredUsers = users.filter((user) => {
-			let name = user.name.toLowerCase();
-			let username = user.username.toLocaleLowerCase();
-			return name.includes(searchTerm.toLowerCase()) || username.includes(searchTerm.toLowerCase());
-		});
-	}
 </script>
 
 <div class="mx-auto px-8 py-8 flex flex-col justify-center content-center h-full">
@@ -24,15 +24,73 @@
 	<section class="pt-10 flex flex-col">
 		<div class="flex flex-row gap-8">
 			<h5 class="p-6 text-2xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
-				Registered Users ({users.length})
+				Registered Users ({count})
 			</h5>
 			<div class="sm:flex flex-row items-center hidden">
-				<input
-					bind:value={searchTerm}
-					on:input={searchAdditives}
-					class="leading-5 py-2 px-3 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500"
-					placeholder="Search Name or Id No."
-				/>
+				<form action="/admin">
+					<input
+						name="q"
+						value={query != null ? query : ''}
+						class="leading-5 py-2 px-3 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500"
+						placeholder="Search Name or Id No."
+					/>
+				</form>
+				<!--
+				<nav aria-label="Page navigation">
+					<ul class="inline-flex -space-x-px text-base h-10">
+						<li>
+							<a
+								href="#"
+								class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+								>Previous</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+								>1</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+								>2</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								aria-current="page"
+								class="flex items-center justify-center px-4 h-10 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+								>3</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+								>4</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+								>5</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+								>Next</a
+							>
+						</li>
+					</ul>
+				</nav>
+				-->
 			</div>
 		</div>
 
@@ -53,12 +111,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each searchTerm.length == 0 ? users : filteredUsers as user}
+					{#each users as user}
 						<tr
 							class="border-b dark:border-slate-700 font-medium text-slate-900 whitespace-nowrap dark:text-slate-100"
 						>
-							<td class="px-6 py-4"> {user.name} </td>
-							<td class="px-6 py-4"> {user.school} </td>
+							<td class="px-6 py-4 narrow-col"> {user.name} </td>
+							<td class="px-6 py-4 narrow-col"> {user.school} </td>
 							<td class="px-6 py-4"> {user.phone} </td>
 							<td class="px-6 py-4"> {user.username} </td>
 							<td class="px-6 py-4"> <StarProgress progress={user.progress} /> </td>
@@ -82,7 +140,7 @@
 									>
 								{/if}</td
 							>
-							<td class="px-6 py-4 text-right">
+							<td class="px-6 py-4 text-right button-col">
 								<a
 									href="/admin/edit/{user.id}"
 									class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -105,3 +163,15 @@
 		</div>
 	</section>
 </div>
+
+<style>
+	table {
+		width: 100%;
+	}
+	table td.narrow-col {
+		overflow: hidden;
+		word-wrap: break-word;
+		text-overflow: ellipsis;
+		max-width: 250px;
+	}
+</style>
