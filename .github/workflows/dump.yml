@@ -17,7 +17,7 @@ jobs:
         with:
           database_url: "${{ secrets.DATABASE_URL }}"
           path: "backup_${{ env.NOW }}.sql"
-          postgresql_version: "15"
+          postgresql_version: "16"
           options: "--no-acl --no-owner"
       - name: Upload dump as artifact
         uses: actions/upload-artifact@v3
