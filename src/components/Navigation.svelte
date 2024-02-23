@@ -4,15 +4,15 @@
 	let open = false;
 </script>
 
-<nav class="bg-slate-100 dark:bg-slate-900 border-slate-200 fixed top-0 left-0 w-full z-50">
-	<div class="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto p-4">
+<nav class="fixed left-0 top-0 z-50 w-full border-slate-200 bg-slate-100 dark:bg-slate-900">
+	<div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-end p-4">
 		<button
 			on:click={() => (open = !open)}
-			class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-lg md:hidden hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-200 dark:text-slate-400 dark:hover:bg-slate-700 dark:focus:ring-slate-600"
+			class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-200 dark:text-slate-400 dark:hover:bg-slate-700 dark:focus:ring-slate-600 md:hidden"
 		>
 			<span class="sr-only">Open main menu</span>
 			<svg
-				class="w-5 h-5"
+				class="h-5 w-5"
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -27,8 +27,8 @@
 				/>
 			</svg>
 		</button>
-		<div class="hidden w-full md:block md:w-auto bg-slate-100 dark:bg-slate-900">
-			<ul class="font-medium flex p-0 flex-row space-x-8 dark:bg-slate-900">
+		<div class="hidden w-full bg-slate-100 dark:bg-slate-900 md:block md:w-auto">
+			<ul class="flex flex-row space-x-8 p-0 font-medium dark:bg-slate-900">
 				<li>
 					<NavMenuItem name={$t('home')} path={'/'} />
 				</li>
@@ -43,7 +43,7 @@
 				</li>
 				<li>
 					<select
-						class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500 font-bold"
+						class="block w-full rounded-lg border border-slate-300 bg-slate-50 p-2.5 text-sm font-bold text-slate-900 focus:border-slate-500 focus:ring-slate-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-slate-500 dark:focus:ring-slate-500"
 						bind:value={$locale}
 					>
 						{#each locales as l}
@@ -59,11 +59,11 @@
 <aside
 	class="{open
 		? 'translate-x-0'
-		: 'translate-x-full'} h-full fixed right-0 top-0 pt-16 w-64 z-10 transition-transform sm:translate-x-full"
+		: 'translate-x-full'} fixed right-0 top-0 z-10 h-full w-64 pt-16 transition-transform sm:translate-x-full"
 	aria-label="Sidebar"
 >
 	<ul
-		class="h-full font-medium flex flex-col p-4 pt-4 bg-slate-200 dark:bg-slate-800 border-l border-gray-100 dark:border-gray-700"
+		class="flex h-full flex-col border-l border-gray-100 bg-slate-200 p-4 pt-4 font-medium dark:border-gray-700 dark:bg-slate-800"
 	>
 		<li>
 			<NavMenuItem
@@ -103,7 +103,7 @@
 		</li>
 		<li>
 			<select
-				class="mt-4 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500 font-bold"
+				class="mt-4 block w-full rounded-lg border border-slate-300 bg-slate-50 p-2.5 text-sm font-bold text-slate-900 focus:border-slate-500 focus:ring-slate-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-slate-500 dark:focus:ring-slate-500"
 				bind:value={$locale}
 			>
 				{#each locales as l}

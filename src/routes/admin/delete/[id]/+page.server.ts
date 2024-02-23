@@ -4,37 +4,36 @@ import { auth } from '$lib/server/lucia';
 import { prisma } from '$lib/server/prisma';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
-    const session = await locals.auth.validate()
-    if (!session) {
-        throw redirect(302, '/login')
-    }
-    const user = await prisma.authUser.findUnique({
-        where: {
-            id: params.id
-        }
-    }
-    )
-    if (!user) {
-        throw error(404, 'User not found')
-    }
-    return {
-        user: user
-    }
-}
+	const session = await locals.auth.validate();
+	if (!session) {
+		throw redirect(302, '/login');
+	}
+	const user = await prisma.authUser.findUnique({
+		where: {
+			id: params.id
+		}
+	});
+	if (!user) {
+		throw error(404, 'User not found');
+	}
+	return {
+		user: user
+	};
+};
 
 export const actions = {
-    default: async ({ request }) => {
-        const formData = Object.fromEntries(await request.formData());
-        const data = formData as {
-            id: string;
-        };
+	default: async ({ request }) => {
+		const formData = Object.fromEntries(await request.formData());
+		const data = formData as {
+			id: string;
+		};
 
-        try {
-            auth.deleteUser(data.id)
-        } catch (err) {
-            console.error(err)
-            return fail(400, { message: 'Could not update user' })
-        }
-        throw redirect(302, '/admin')
-    }
-}
+		try {
+			auth.deleteUser(data.id);
+		} catch (err) {
+			console.error(err);
+			return fail(400, { message: 'Could not update user' });
+		}
+		throw redirect(302, '/admin');
+	}
+};

@@ -2,7 +2,7 @@ name: Daily Database Dump
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs every day at midnight UTC
+    - cron: '0 0 * * *' # Runs every day at midnight UTC
   workflow_dispatch:
 
 jobs:
@@ -15,12 +15,12 @@ jobs:
       - name: Use pg-dump action
         uses: tj-actions/pg-dump@v3
         with:
-          database_url: "${{ secrets.DATABASE_URL }}"
-          path: "backup_${{ env.NOW }}.sql"
-          postgresql_version: "16"
-          options: "--no-acl --no-owner"
+          database_url: '${{ secrets.DATABASE_URL }}'
+          path: 'backup_${{ env.NOW }}.sql'
+          postgresql_version: '16'
+          options: '--no-acl --no-owner'
       - name: Upload dump as artifact
         uses: actions/upload-artifact@v3
         with:
           name: database-dump
-          path: "backup_${{ env.NOW }}.sql"
+          path: 'backup_${{ env.NOW }}.sql'

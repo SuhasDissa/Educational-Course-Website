@@ -24,15 +24,15 @@
 
 <a
 	href={progress == 0 ? '#' : `${module.url[loc]}`}
-	class="flex flex-col max-w-sm rounded-lg drop-shadow duration-100 dark:bg-slate-800 overflow-hidden border {colors}"
+	class="flex max-w-sm flex-col overflow-hidden rounded-lg border drop-shadow duration-100 dark:bg-slate-800 {colors}"
 >
-	<div class="p-6 w-full flex flex-row justify-between">
+	<div class="flex w-full flex-row justify-between p-6">
 		<h5 class="text-2xl font-bold tracking-tight">
 			{module.name}
 		</h5>
 		{#if progress == 2}
 			<svg
-				class="w-8 h-8"
+				class="h-8 w-8"
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -48,7 +48,7 @@
 			</svg>
 		{:else if progress == 1}
 			<svg
-				class="rtl:rotate-180 w-8 h-8"
+				class="h-8 w-8 rtl:rotate-180"
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -65,7 +65,7 @@
 		{/if}
 	</div>
 	<p
-		class="grow p-6 max-h-48 overflow-hidden font-normal text-slate-500 dark:text-slate-400 text-lg sm:text-xl"
+		class="max-h-48 grow overflow-hidden p-6 text-lg font-normal text-slate-500 dark:text-slate-400 sm:text-xl"
 	>
 		{module.description[loc]}
 	</p>

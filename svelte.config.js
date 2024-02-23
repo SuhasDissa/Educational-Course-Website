@@ -15,8 +15,8 @@ const config = {
 		adapter: process.env.ADAPTER === 'node' ? adapterNode() : adapter(),
 
 		csrf: {
-            checkOrigin: false,
-        },
+			checkOrigin: false
+		}
 	}
 };
 

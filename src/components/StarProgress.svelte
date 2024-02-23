@@ -16,7 +16,7 @@
 <div class="flex items-center">
 	{#each modules as module}
 		<svg
-			class="w-4 h-4 ms-1 {module ? 'text-yellow-300' : 'text-gray-300 dark:text-gray-500'}"
+			class="ms-1 h-4 w-4 {module ? 'text-yellow-300' : 'text-gray-300 dark:text-gray-500'}"
 			aria-hidden="true"
 			xmlns="http://www.w3.org/2000/svg"
 			fill="currentColor"

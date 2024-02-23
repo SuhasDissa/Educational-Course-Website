@@ -17,21 +17,21 @@
 	import StarProgress from '../../components/StarProgress.svelte';
 </script>
 
-<div class="mx-auto px-8 py-8 flex flex-col justify-center content-center h-full">
+<div class="mx-auto flex h-full flex-col content-center justify-center px-8 py-8">
 	<h1 class="p-6 text-4xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
 		{$t('admin_page')}
 	</h1>
-	<section class="pt-10 flex flex-col">
+	<section class="flex flex-col pt-10">
 		<div class="flex flex-row gap-8">
 			<h5 class="p-6 text-2xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
 				Registered Users ({count})
 			</h5>
-			<div class="sm:flex flex-row items-center hidden">
+			<div class="hidden flex-row items-center sm:flex">
 				<form action="/admin">
 					<input
 						name="q"
 						value={query != null ? query : ''}
-						class="leading-5 py-2 px-3 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500"
+						class="block rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-sm leading-5 text-slate-900 focus:border-slate-500 focus:ring-slate-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-slate-500 dark:focus:ring-slate-500"
 						placeholder="Search Name or Id No."
 					/>
 				</form>
@@ -94,9 +94,9 @@
 			</div>
 		</div>
 
-		<div class="relative overflow-x-auto shadow-md rounded-lg dark:bg-slate-800">
-			<table class="w-full text-md text-left rtl:text-right text-slate-500 dark:text-slate-400">
-				<thead class="text-slate-700 bg-slate-50 dark:bg-slate-700 dark:text-slate-400">
+		<div class="relative overflow-x-auto rounded-lg shadow-md dark:bg-slate-800">
+			<table class="text-md w-full text-left text-slate-500 rtl:text-right dark:text-slate-400">
+				<thead class="bg-slate-50 text-slate-700 dark:bg-slate-700 dark:text-slate-400">
 					<tr>
 						<th scope="col" class="px-6 py-3"> Name </th>
 						<th scope="col" class="px-6 py-3"> School </th>
@@ -113,10 +113,10 @@
 				<tbody>
 					{#each users as user}
 						<tr
-							class="border-b dark:border-slate-700 font-medium text-slate-900 whitespace-nowrap dark:text-slate-100"
+							class="whitespace-nowrap border-b font-medium text-slate-900 dark:border-slate-700 dark:text-slate-100"
 						>
-							<td class="px-6 py-4 narrow-col"> {user.name} </td>
-							<td class="px-6 py-4 narrow-col"> {user.school} </td>
+							<td class="narrow-col px-6 py-4"> {user.name} </td>
+							<td class="narrow-col px-6 py-4"> {user.school} </td>
 							<td class="px-6 py-4"> {user.phone} </td>
 							<td class="px-6 py-4"> {user.username} </td>
 							<td class="px-6 py-4"> <StarProgress progress={user.progress} /> </td>
@@ -130,27 +130,27 @@
 							<td class="px-6 py-4">
 								{#if user.role == 'admin'}
 									<span
-										class="bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300"
+										class="me-2 rounded bg-yellow-100 px-2.5 py-0.5 text-sm font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
 										>Admin</span
 									>
 								{:else}
 									<span
-										class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+										class="me-2 rounded bg-blue-100 px-2.5 py-0.5 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300"
 										>User</span
 									>
 								{/if}</td
 							>
-							<td class="px-6 py-4 text-right button-col">
+							<td class="button-col px-6 py-4 text-right">
 								<a
 									href="/admin/edit/{user.id}"
-									class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+									class="me-2 inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 								>
 									<span class="material-symbols-rounded"> edit </span>
 									Edit User
 								</a>
 								<a
 									href="/admin/certificate/{user.id}"
-									class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+									class="me-2 inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 								>
 									<span class="material-symbols-rounded"> license </span>
 									View Certificate

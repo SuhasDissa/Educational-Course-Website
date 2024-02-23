@@ -1,14 +1,14 @@
-import { auth } from '$lib/server/lucia'
-import { fail, redirect } from '@sveltejs/kit'
-import type { PageServerLoad } from './$types'
-import { prisma } from '$lib/server/prisma'
+import { auth } from '$lib/server/lucia';
+import { fail, redirect } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
+import { prisma } from '$lib/server/prisma';
 
 export const load: PageServerLoad = async ({ locals }) => {
-	const session = await locals.auth.validate()
+	const session = await locals.auth.validate();
 	if (session) {
-		throw redirect(302, '/profile')
+		throw redirect(302, '/profile');
 	}
-}
+};
 
 export const actions = {
 	default: async ({ request, locals }) => {
@@ -34,23 +34,23 @@ export const actions = {
 					username: data.username.trim().toUpperCase(),
 					school: data.school,
 					phone: data.phone,
-					role: data.username.toLowerCase() == "admin" ? "admin" : "user"
+					role: data.username.toLowerCase() == 'admin' ? 'admin' : 'user'
 				}
-			})
-			const key = await auth.useKey('username', data.username.trim().toUpperCase(), data.password)
-			const userId = key.userId
+			});
+			const key = await auth.useKey('username', data.username.trim().toUpperCase(), data.password);
+			const userId = key.userId;
 
 			await prisma.progress.create({
 				data: {
 					userId: userId
 				}
-			})
-			const session = await auth.createSession({ userId, attributes: {} })
-			locals.auth.setSession(session)
+			});
+			const session = await auth.createSession({ userId, attributes: {} });
+			locals.auth.setSession(session);
 		} catch (err) {
-			console.error(err)
-			return fail(400, { message: 'Could not register user' })
+			console.error(err);
+			return fail(400, { message: 'Could not register user' });
 		}
-		throw redirect(302, '/profile')
+		throw redirect(302, '/profile');
 	}
 };

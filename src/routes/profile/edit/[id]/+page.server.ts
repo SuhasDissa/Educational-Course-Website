@@ -3,52 +3,51 @@ import type { PageServerLoad } from './$types';
 import { prisma } from '$lib/server/prisma';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
-    const session = await locals.auth.validate()
-    if (!session) {
-        throw redirect(302, '/login')
-    }
-    const user = await prisma.authUser.findUnique({
-        where: {
-            id: params.id
-        },
-        include: {
-            progress: true
-        }
-    }
-    )
-    if (!user) {
-        throw error(404, 'User not found')
-    }
-    return {
-        user: user
-    }
-}
+	const session = await locals.auth.validate();
+	if (!session) {
+		throw redirect(302, '/login');
+	}
+	const user = await prisma.authUser.findUnique({
+		where: {
+			id: params.id
+		},
+		include: {
+			progress: true
+		}
+	});
+	if (!user) {
+		throw error(404, 'User not found');
+	}
+	return {
+		user: user
+	};
+};
 
 export const actions = {
-    default: async ({ request }) => {
-        const formData = Object.fromEntries(await request.formData());
-        const data = formData as {
-            id: string;
-            name: string;
-            school: string;
-            phone: string;
-        };
+	default: async ({ request }) => {
+		const formData = Object.fromEntries(await request.formData());
+		const data = formData as {
+			id: string;
+			name: string;
+			school: string;
+			phone: string;
+		};
 
-        try {
-            await prisma.authUser.update({
-                where: {
-                    id: data.id
-                },
-                data: {
-                    name: data.name,
-                    school: data.school,
-                    phone: data.phone,
-                }
-            })
-        } catch (err) {
-            console.error(err)
-            return fail(400, { message: 'Could not update user' })
-        }
-        throw redirect(302, '/profile')
-    }
-}
+		try {
+			await prisma.authUser.update({
+				where: {
+					id: data.id
+				},
+				data: {
+					name: data.name,
+					school: data.school,
+					phone: data.phone
+				}
+			});
+		} catch (err) {
+			console.error(err);
+			return fail(400, { message: 'Could not update user' });
+		}
+		throw redirect(302, '/profile');
+	}
+};

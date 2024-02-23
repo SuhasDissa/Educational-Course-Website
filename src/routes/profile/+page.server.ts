@@ -4,9 +4,8 @@ import { prisma } from '$lib/server/prisma';
 import type { Module } from '$lib/server/types';
 import { modules } from '$lib/server/modules';
 
-
 export const load: PageServerLoad = async ({ locals }) => {
-	const session = await locals.auth.validate()
+	const session = await locals.auth.validate();
 	if (!session) {
 		throw redirect(302, '/account');
 	}
@@ -18,24 +17,31 @@ export const load: PageServerLoad = async ({ locals }) => {
 		include: {
 			progress: true
 		}
-	})
+	});
 	if (!user) {
-		throw error(404, 'User not found')
+		throw error(404, 'User not found');
 	}
-	let pg = user.progress
+	let pg = user.progress;
 	if (!pg) {
-		pg = await prisma.progress.create(
-			{
-				data: {
-					userId: session.user.userId
-				}
+		pg = await prisma.progress.create({
+			data: {
+				userId: session.user.userId
 			}
-		)
+		});
 	}
-	const progress = [pg.module1, pg.module2, pg.module3, pg.module4, pg.module5, pg.module6, pg.module7, pg.module8]
+	const progress = [
+		pg.module1,
+		pg.module2,
+		pg.module3,
+		pg.module4,
+		pg.module5,
+		pg.module6,
+		pg.module7,
+		pg.module8
+	];
 
 	const updateProgress = (modules: Module[], progress: Boolean[]) => {
-		let incomplete = true
+		let incomplete = true;
 		for (let i = 0; i < modules.length; i++) {
 			if (progress[i]) {
 				modules[i].progress = 2;
@@ -55,5 +61,5 @@ export const load: PageServerLoad = async ({ locals }) => {
 	return {
 		user: user,
 		modules: updateProgress(modules, progress)
-	}
-}
+	};
+};

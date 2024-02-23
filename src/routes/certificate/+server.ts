@@ -1,80 +1,79 @@
-import { PDFDocument, StandardFonts } from 'pdf-lib'
-import { error, redirect, type RequestHandler } from '@sveltejs/kit'
-import { prisma } from '$lib/server/prisma'
-import fs from 'node:fs'
-import QRCode from 'qrcode'
+import { PDFDocument, StandardFonts } from 'pdf-lib';
+import { error, redirect, type RequestHandler } from '@sveltejs/kit';
+import { prisma } from '$lib/server/prisma';
+import fs from 'node:fs';
+import QRCode from 'qrcode';
 
 function replaceNonASCII(str: string) {
-    return str.replace(/[^\x00-\x7F]/g, "?");
+	return str.replace(/[^\x00-\x7F]/g, '?');
 }
 
 export const GET: RequestHandler = async ({ locals }) => {
-    const session = await locals.auth.validate()
-    if (!session) {
-        throw redirect(302, '/')
-    }
-    const user = await prisma.authUser.findUnique({
-        where: {
-            id: session.user.userId
-        },
-        include: {
-            progress: true
-        }
-    })
-    if (!user) {
-        throw error(404, 'User not found')
-    }
+	const session = await locals.auth.validate();
+	if (!session) {
+		throw redirect(302, '/');
+	}
+	const user = await prisma.authUser.findUnique({
+		where: {
+			id: session.user.userId
+		},
+		include: {
+			progress: true
+		}
+	});
+	if (!user) {
+		throw error(404, 'User not found');
+	}
 
-    if (!user.progress?.practical) {
-        throw redirect(302, '/profile')
-    }
+	if (!user.progress?.practical) {
+		throw redirect(302, '/profile');
+	}
 
-    const progressUrl = `https://uva-edu.onrender.com/progress/${user.id}`
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString();
-    const filePath = './static/files/certificate.pdf';
-    const fileBuffer = fs.readFileSync(filePath);
+	const progressUrl = `https://uva-edu.onrender.com/progress/${user.id}`;
+	const currentDate = new Date();
+	const formattedDate = currentDate.toLocaleDateString();
+	const filePath = './static/files/certificate.pdf';
+	const fileBuffer = fs.readFileSync(filePath);
 
-    const pdfDoc = await PDFDocument.load(fileBuffer)
+	const pdfDoc = await PDFDocument.load(fileBuffer);
 
-    const notoFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold)
+	const notoFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-    const firstPage = pdfDoc.getPage(0)
+	const firstPage = pdfDoc.getPage(0);
 
-    const qrImageBuffer = await QRCode.toBuffer(progressUrl)
-    const image = await pdfDoc.embedPng(qrImageBuffer)
+	const qrImageBuffer = await QRCode.toBuffer(progressUrl);
+	const image = await pdfDoc.embedPng(qrImageBuffer);
 
-    firstPage.drawImage(image, {
-        x: 650,
-        y: 230,
-        width: 80,
-        height: 80
-    })
+	firstPage.drawImage(image, {
+		x: 650,
+		y: 230,
+		width: 80,
+		height: 80
+	});
 
-    const form = pdfDoc.getForm()
+	const form = pdfDoc.getForm();
 
-    const rawUpdateFieldAppearances = form.updateFieldAppearances.bind(form);
-    form.updateFieldAppearances = function () {
-        return rawUpdateFieldAppearances(notoFont);
-    };
+	const rawUpdateFieldAppearances = form.updateFieldAppearances.bind(form);
+	form.updateFieldAppearances = function () {
+		return rawUpdateFieldAppearances(notoFont);
+	};
 
-    form.updateFieldAppearances(notoFont)
+	form.updateFieldAppearances(notoFont);
 
-    form.getTextField('name').setText(replaceNonASCII(user.name));
-    form.getTextField('school').setText(replaceNonASCII(user.school));
-    form.getTextField('id').setText(replaceNonASCII(user.username));
-    form.getTextField('date').setText(formattedDate);
+	form.getTextField('name').setText(replaceNonASCII(user.name));
+	form.getTextField('school').setText(replaceNonASCII(user.school));
+	form.getTextField('id').setText(replaceNonASCII(user.username));
+	form.getTextField('date').setText(formattedDate);
 
-    form.flatten()
+	form.flatten();
 
-    const output = await pdfDoc.save()
+	const output = await pdfDoc.save();
 
-    return new Response(output, {
-        status: 200, headers: {
-            "Content-type": "application/pdf",
-            "Content-Disposition": "attachment; filename=certificate.pdf"
-        }
-    })
-
-
-}
+	return new Response(output, {
+		status: 200,
+		headers: {
+			'Content-type': 'application/pdf',
+			'Content-Disposition': 'attachment; filename=certificate.pdf'
+		}
+	});
+};

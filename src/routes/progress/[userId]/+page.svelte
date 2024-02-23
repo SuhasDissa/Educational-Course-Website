@@ -6,41 +6,41 @@
 	import ModuleProgressCard from '../../../components/ModuleProgress.svelte';
 </script>
 
-<div class="mx-auto max-w-screen-xl px-8 py-20 grid grid-cols-1 sm:grid-cols-2 gap-8">
-	<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg">
-		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-3xl font-bold">
+<div class="mx-auto grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-20 sm:grid-cols-2">
+	<div class="rounded-lg bg-slate-200 p-10 dark:bg-slate-800">
+		<h1 class="text-xl font-bold text-slate-700 dark:text-slate-300 sm:text-2xl md:text-3xl">
 			{user.name}
 		</h1>
-		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
+		<h2 class="max-w-prose pt-4 text-xl text-slate-400 sm:pt-8 sm:text-2xl md:text-4xl">
 			{$t('user.school')}
 		</h2>
 		<p
-			class="text-slate-500 dark:text-slate-300 text-lg sm:text-xl md:text-3xl max-w-prose pt-4 sm:pt-8"
+			class="max-w-prose pt-4 text-lg text-slate-500 dark:text-slate-300 sm:pt-8 sm:text-xl md:text-3xl"
 		>
 			{user.school}
 		</p>
-		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
+		<h2 class="max-w-prose pt-4 text-xl text-slate-400 sm:pt-8 sm:text-2xl md:text-4xl">
 			{$t('user.phone')}
 		</h2>
 		<p
-			class="text-slate-500 dark:text-slate-300 text-lg sm:text-xl md:text-3xl max-w-prose pt-4 sm:pt-8"
+			class="max-w-prose pt-4 text-lg text-slate-500 dark:text-slate-300 sm:pt-8 sm:text-xl md:text-3xl"
 		>
 			{user.phone}
 		</p>
-		<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl max-w-prose pt-4 sm:pt-8">
+		<h2 class="max-w-prose pt-4 text-xl text-slate-400 sm:pt-8 sm:text-2xl md:text-4xl">
 			{$t('user.id_no')}
 		</h2>
 		<p
-			class="text-slate-500 dark:text-slate-300 text-lg sm:text-xl md:text-3xl max-w-prose pt-4 sm:pt-8"
+			class="max-w-prose pt-4 text-lg text-slate-500 dark:text-slate-300 sm:pt-8 sm:text-xl md:text-3xl"
 		>
 			{user.username}
 		</p>
 	</div>
-	<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg">
-		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">
+	<div class="rounded-lg bg-slate-200 p-10 dark:bg-slate-800">
+		<h1 class="text-xl font-bold text-slate-700 dark:text-slate-300 sm:text-2xl md:text-4xl">
 			{$t('progress')}
 		</h1>
-		<ol class="space-y-4 w-full pt-8">
+		<ol class="w-full space-y-4 pt-8">
 			{#each modules as module}
 				<li>
 					<ModuleProgressCard {module} />
@@ -48,11 +48,11 @@
 			{/each}
 		</ol>
 	</div>
-	<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg">
-		<h1 class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold">
+	<div class="rounded-lg bg-slate-200 p-10 dark:bg-slate-800">
+		<h1 class="text-xl font-bold text-slate-700 dark:text-slate-300 sm:text-2xl md:text-4xl">
 			{$t('practical_lesson')}
 		</h1>
-		<h2 class="text-slate-400 text-lg sm:text-xl md:text-3xl font-normal max-w-prose pt-4 sm:pt-8">
+		<h2 class="max-w-prose pt-4 text-lg font-normal text-slate-400 sm:pt-8 sm:text-xl md:text-3xl">
 			{#if user.progress?.practical}
 				{$t('practical_completed')}
 			{:else}

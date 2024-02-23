@@ -19,7 +19,7 @@
 	}
 </script>
 
-<div class="block w-full p-4 rounded-lg dark:bg-slate-800 border {colors}">
+<div class="block w-full rounded-lg border p-4 dark:bg-slate-800 {colors}">
 	<div class="flex items-center justify-between">
 		<div class="">
 			<h3 class="font-bold">{module.name}</h3>
@@ -27,7 +27,7 @@
 		</div>
 		{#if progress == 2}
 			<svg
-				class="w-4 h-4"
+				class="h-4 w-4"
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"

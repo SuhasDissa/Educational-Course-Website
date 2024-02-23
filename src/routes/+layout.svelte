@@ -15,7 +15,7 @@
 	});
 </script>
 
-<div class="font-sans antialiased bg-slate-100 dark:bg-slate-900 min-h-screen pt-16">
+<div class="min-h-screen bg-slate-100 pt-16 font-sans antialiased dark:bg-slate-900">
 	<Navigation />
 
 	<!-- Page Content -->

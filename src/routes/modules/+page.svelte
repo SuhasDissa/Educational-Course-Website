@@ -8,10 +8,10 @@
 </script>
 
 <div class="mx-auto max-w-screen-xl px-8 py-8">
-	<h2 class="text-slate-600 dark:text-slate-400 text-2xl sm:text-3xl md:text-5xl font-bold">
+	<h2 class="text-2xl font-bold text-slate-600 dark:text-slate-400 sm:text-3xl md:text-5xl">
 		{$t('all_modules')}
 	</h2>
-	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-flow-row gap-4 pt-4 sm:pt-8">
+	<div class="grid grid-flow-row grid-cols-1 gap-4 pt-4 sm:grid-cols-2 sm:pt-8 md:grid-cols-3">
 		{#each modules as module}
 			<ModuleCard {module} />
 		{/each}

@@ -4,65 +4,64 @@ import { prisma } from '$lib/server/prisma';
 import { auth } from '$lib/server/lucia';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
-    const session = await locals.auth.validate()
-    if (!session) {
-        throw redirect(302, '/login')
-    }
-    const user = await prisma.authUser.findUnique({
-        where: {
-            id: params.id
-        },
-        include: {
-            progress: true
-        }
-    }
-    )
-    if (!user) {
-        throw error(404, 'User not found')
-    }
-    return {
-        user: user
-    }
-}
+	const session = await locals.auth.validate();
+	if (!session) {
+		throw redirect(302, '/login');
+	}
+	const user = await prisma.authUser.findUnique({
+		where: {
+			id: params.id
+		},
+		include: {
+			progress: true
+		}
+	});
+	if (!user) {
+		throw error(404, 'User not found');
+	}
+	return {
+		user: user
+	};
+};
 
 export const actions = {
-    default: async ({ request }) => {
-        const formData = Object.fromEntries(await request.formData());
-        const data = formData as {
-            id: string;
-            name: string;
-            username: string;
-            school: string;
-            phone: string;
-            role: string;
-            practical: string;
-        };
+	default: async ({ request }) => {
+		const formData = Object.fromEntries(await request.formData());
+		const data = formData as {
+			id: string;
+			name: string;
+			username: string;
+			school: string;
+			phone: string;
+			role: string;
+			practical: string;
+		};
 
-        try {
-            await prisma.authUser.update({
-                where: {
-                    id: data.id
-                },
-                data: {
-                    name: data.name,
-                    username: data.username.toUpperCase(),
-                    school: data.school,
-                    phone: data.phone,
-                    role: data.role
-                }
-            })
-            await prisma.progress.update({
-                where: {
-                    userId: data.id
-                },
-                data: {
-                    practical: data.practical == "true"
-                }
-            })
-        } catch (err) {
-            console.error(err)
-            return fail(400, { message: 'Could not update user' })
-        }
-        throw redirect(302, '/admin')
-    }
-}
+		try {
+			await prisma.authUser.update({
+				where: {
+					id: data.id
+				},
+				data: {
+					name: data.name,
+					username: data.username.toUpperCase(),
+					school: data.school,
+					phone: data.phone,
+					role: data.role
+				}
+			});
+			await prisma.progress.update({
+				where: {
+					userId: data.id
+				},
+				data: {
+					practical: data.practical == 'true'
+				}
+			});
+		} catch (err) {
+			console.error(err);
+			return fail(400, { message: 'Could not update user' });
+		}
+		throw redirect(302, '/admin');
+	}
+};

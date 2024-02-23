@@ -23,7 +23,7 @@
 
 <a
 	href={progress == 0 ? '#' : `${module.url[loc]}`}
-	class="block w-full p-4 rounded-lg dark:bg-slate-800 border {colors}"
+	class="block w-full rounded-lg border p-4 dark:bg-slate-800 {colors}"
 >
 	<div class="flex items-center justify-between">
 		<div class="">
@@ -32,7 +32,7 @@
 		</div>
 		{#if progress == 2}
 			<svg
-				class="w-4 h-4"
+				class="h-4 w-4"
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -48,7 +48,7 @@
 			</svg>
 		{:else if progress == 1}
 			<svg
-				class="rtl:rotate-180 w-4 h-4"
+				class="h-4 w-4 rtl:rotate-180"
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"

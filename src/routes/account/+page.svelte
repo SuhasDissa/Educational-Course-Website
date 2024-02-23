@@ -2,35 +2,35 @@
 	import { t } from '$lib/i18n';
 </script>
 
-<div class="mx-auto max-w-screen-xl px-8 pt-16 flex flex-col justify-center content-center h-full">
+<div class="mx-auto flex h-full max-w-screen-xl flex-col content-center justify-center px-8 pt-16">
 	<h1
-		class="text-slate-700 dark:text-slate-300 text-xl sm:text-2xl md:text-4xl font-bold text-center"
+		class="text-center text-xl font-bold text-slate-700 dark:text-slate-300 sm:text-2xl md:text-4xl"
 	>
 		{$t('need_account')}
 	</h1>
-	<section class="pt-16 flex flex-col sm:flex-row justify-evenly gap-8">
-		<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg flex flex-col">
-			<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose">
+	<section class="flex flex-col justify-evenly gap-8 pt-16 sm:flex-row">
+		<div class="flex flex-col rounded-lg bg-slate-200 p-10 dark:bg-slate-800">
+			<h2 class="max-w-prose text-xl font-bold text-slate-400 sm:text-2xl md:text-4xl">
 				{$t('already_account')}
 			</h2>
-			<div class="pt-8 w-full text-center">
+			<div class="w-full pt-8 text-center">
 				<a
 					href="/login"
 					type="submit"
-					class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
+					class="w-full rounded-lg bg-slate-700 px-5 py-2.5 text-center text-sm font-bold text-white hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 sm:w-auto"
 					>{$t('login_button')}</a
 				>
 			</div>
 		</div>
-		<div class="bg-slate-200 dark:bg-slate-800 p-10 rounded-lg flex flex-col">
-			<h2 class="text-slate-400 text-xl sm:text-2xl md:text-4xl font-bold max-w-prose">
+		<div class="flex flex-col rounded-lg bg-slate-200 p-10 dark:bg-slate-800">
+			<h2 class="max-w-prose text-xl font-bold text-slate-400 sm:text-2xl md:text-4xl">
 				{$t('no_account')}
 			</h2>
-			<div class="pt-8 w-full text-center">
+			<div class="w-full pt-8 text-center">
 				<a
 					href="/register"
 					type="submit"
-					class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
+					class="w-full rounded-lg bg-slate-700 px-5 py-2.5 text-center text-sm font-bold text-white hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 sm:w-auto"
 					>{$t('register_button')}</a
 				>
 			</div>

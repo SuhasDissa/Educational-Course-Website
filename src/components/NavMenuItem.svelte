@@ -11,7 +11,7 @@
 	on:click
 	href={path}
 	class="{browserPath == path
-		? 'text-white bg-slate-500 md:bg-transparent md:text-slate-500 dark:text-white md:dark:text-slate-500'
-		: 'text-slate-900 hover:bg-slate-300 md:hover:bg-transparent md:border-0 md:hover:text-slate-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent'} block py-2 pl-3 pr-4 rounded md:bg-transparent font-bold md:p-0"
+		? 'bg-slate-500 text-white dark:text-white md:bg-transparent md:text-slate-500 md:dark:text-slate-500'
+		: 'text-slate-900 hover:bg-slate-300 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-slate-500 md:dark:hover:bg-transparent'} block rounded py-2 pl-3 pr-4 font-bold md:bg-transparent md:p-0"
 	aria-current="page">{name}</a
 >
