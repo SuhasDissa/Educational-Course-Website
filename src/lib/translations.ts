@@ -188,5 +188,25 @@ export default {
 		en: 'Note: Fill the name and school in English',
 		si: 'සැ.යු: නම සහ පාසල ඉංග්‍රීසියෙන් පුරවන්න',
 		ta: 'குறிப்பு: பெயரையும் பள்ளியையும் ஆங்கிலத்தில் நிரப்பவும்'
+	},
+	'stat.total': {
+		en: 'Number of Users',
+		si: 'පරිශීලකයින් සංඛ්යාව'
+	},
+	'stat.admin': {
+		en: 'Number of Admin Users',
+		si: 'පරිපාලක පරිශීලකයින් සංඛ්යාව'
+	},
+	'stat.finished_users': {
+		en: 'Number of Users who have completed the modules',
+		si: 'මොඩියුල සම්පූර්ණ කර ඇති පරිශීලකයින් සංඛ්යාව'
+	},
+	'stat.users': {
+		en: 'User Statistics',
+		si: 'පරිශීලක සංඛ්යා ලේඛන'
+	},
+	'stat.progress': {
+		en: 'User Progress',
+		si: 'පරිශීලක ප්‍රගතිය'
 	}
 };

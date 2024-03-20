@@ -1,11 +1,8 @@
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { prisma } from '$lib/server/prisma';
-import type { AuthUser } from '@prisma/client';
 
-const rowsPerPage = 100;
-
-export const load: PageServerLoad = async ({ locals, url }) => {
+export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	if (!session) {
 		throw redirect(302, '/account');
@@ -21,51 +18,54 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 	if (user.role != 'admin') {
 		throw redirect(302, '/');
 	}
-	const query = url.searchParams.get('q');
 
-	const pg = url.searchParams.get('page');
-
-	const page = stringToInt(pg);
-
-	var users: AuthUser[];
-
-	if (query != null && query.length != 0) {
-		users = await prisma.authUser.findMany({
-			include: {
-				progress: true
-			},
+	const [allCount, adminCount, practical, module1, module2, module3, module4, module5, module6, module7, module8] = await prisma.$transaction([
+		prisma.authUser.count(),
+		prisma.authUser.count({
 			where: {
-				OR: [{ username: { contains: query } }, { name: { contains: query } }]
+				role: "admin"
 			}
-		});
-	} else {
-		users = await prisma.authUser.findMany({
-			orderBy: {
-				name: 'asc'
-			},
-			include: {
-				progress: true
-			}
-			//skip: (page - 1) * rowsPerPage,
-			//take: rowsPerPage
-		});
+		}),
+		prisma.progress.count({ where: { practical: true } }),
+		prisma.progress.count({ where: { module1: true } }),
+		prisma.progress.count({ where: { module2: true } }),
+		prisma.progress.count({ where: { module3: true } }),
+		prisma.progress.count({ where: { module4: true } }),
+		prisma.progress.count({ where: { module5: true } }),
+		prisma.progress.count({ where: { module6: true } }),
+		prisma.progress.count({ where: { module7: true } }),
+		prisma.progress.count({ where: { module8: true } }),
+	]);
+
+	const output = {
+		allCount: allCount,
+		adminCount: adminCount,
+		progress: {
+			module1: module1,  // Count for users who completed module1
+			module2: module2,  // Count for users who completed module2
+			module3: module3,
+			module4: module4,
+			module5: module5,
+			module6: module6,
+			module7: module7,
+			module8: module8,
+			practical: practical, // Count for users who completed the practical section
+		},
+		progressPercent: {
+			module1: ((module1 / allCount) * 100).toFixed(2),
+			module2: ((module2 / allCount) * 100).toFixed(2),
+			module3: ((module3 / allCount) * 100).toFixed(2),
+			module4: ((module4 / allCount) * 100).toFixed(2),
+			module5: ((module5 / allCount) * 100).toFixed(2),
+			module6: ((module6 / allCount) * 100).toFixed(2),
+			module7: ((module7 / allCount) * 100).toFixed(2),
+			module8: ((module8 / allCount) * 100).toFixed(2),
+			practical: ((practical / allCount) * 100).toFixed(2),
+		}
 	}
 
-	const count = await prisma.authUser.count();
+	console.log(output);
 
-	return {
-		users: users,
-		count: count,
-		rowsPerPage: rowsPerPage,
-		query: query,
-		page: page
-	};
+
+	return output;
 };
-
-function stringToInt(value: string | null): number {
-	if (value === null) {
-		return 1;
-	}
-	const intValue = parseInt(value.trim(), 10);
-	return isNaN(intValue) ? 1 : intValue;
-}
