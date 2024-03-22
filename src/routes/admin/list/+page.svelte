@@ -27,7 +27,7 @@
 				Registered Users ({count})
 			</h5>
 			<div class="hidden flex-row items-center sm:flex">
-				<form action="/admin">
+				<form action="/admin/list">
 					<input
 						name="q"
 						value={query != null ? query : ''}
