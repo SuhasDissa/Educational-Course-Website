@@ -4,13 +4,13 @@
 	let count: number;
 	let query: string | null;
 	let page: number;
-	let rowsPerPage: number;
+	let totalPages: number;
 
 	$: users = data.users;
 	$: count = data.count;
 	$: query = data.query;
 	$: page = data.page;
-	$: rowsPerPage = data.rowsPerPage;
+	$: totalPages = data.totalPages;
 
 	import { t } from '$lib/i18n';
 	import type { AuthUser } from '@prisma/client';
@@ -23,10 +23,10 @@
 	</h1>
 	<section class="flex flex-col pt-10">
 		<div class="flex flex-row gap-8">
-			<h5 class="p-6 text-2xl font-bold tracking-tight text-slate-700 dark:text-slate-300">
+			<h5 class="p-6 text-2xl font-bold text-slate-700 dark:text-slate-300">
 				Registered Users ({count})
 			</h5>
-			<div class="hidden flex-row items-center sm:flex">
+			<div class="hidden flex-row items-center justify-between gap-16 sm:flex">
 				<form action="/admin/list">
 					<input
 						name="q"
@@ -35,62 +35,44 @@
 						placeholder="Search Name or Id No."
 					/>
 				</form>
-				<!--
-				<nav aria-label="Page navigation">
-					<ul class="inline-flex -space-x-px text-base h-10">
-						<li>
-							<a
-								href="#"
-								class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-								>Previous</a
-							>
-						</li>
-						<li>
-							<a
-								href="#"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-								>1</a
-							>
-						</li>
-						<li>
-							<a
-								href="#"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-								>2</a
-							>
-						</li>
-						<li>
-							<a
-								href="#"
-								aria-current="page"
-								class="flex items-center justify-center px-4 h-10 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-								>3</a
-							>
-						</li>
-						<li>
-							<a
-								href="#"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-								>4</a
-							>
-						</li>
-						<li>
-							<a
-								href="#"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-								>5</a
-							>
-						</li>
-						<li>
-							<a
-								href="#"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-								>Next</a
-							>
-						</li>
-					</ul>
-				</nav>
-				-->
+				{#if query == null}
+					<nav aria-label="Page navigation">
+						<form action="/admin/list">
+							<ul class="inline-flex h-10 -space-x-px text-base">
+								<li>
+									<button
+										class="ms-0 flex h-10 cursor-default items-center justify-center rounded-s-lg border border-e-0 border-slate-300 bg-white px-4 leading-tight text-slate-500 hover:bg-slate-100 hover:text-slate-700 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
+										disabled={page === 1}
+										value={page - 1}
+										name="page">Previous</button
+									>
+								</li>
+								{#each Array(totalPages) as pg, index}
+									<li>
+										<button
+											class="flex h-10 items-center justify-center border border-slate-300 px-4 leading-tight {page ===
+											index + 1
+												? 'bg-blue-50 text-slate-600 dark:border-slate-700 dark:bg-slate-700 dark:text-slate-400'
+												: 'bg-white text-slate-500 hover:bg-slate-100 hover:text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white'}"
+											name="page"
+											value={index + 1}
+										>
+											{index + 1}
+										</button>
+									</li>
+								{/each}
+								<li>
+									<button
+										class="flex h-10 items-center justify-center rounded-e-lg border border-slate-300 bg-white px-4 leading-tight text-slate-500 hover:bg-slate-100 hover:text-slate-700 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
+										disabled={page === totalPages}
+										value={page + 1}
+										name="page">Next</button
+									>
+								</li>
+							</ul>
+						</form>
+					</nav>
+				{/if}
 			</div>
 		</div>
 

@@ -1,7 +1,9 @@
 <script lang="ts">
 	export let progress;
 
-	let modules: Boolean[] = [
+	let modules: Boolean[];
+
+	$: modules = [
 		progress.module1,
 		progress.module2,
 		progress.module3,

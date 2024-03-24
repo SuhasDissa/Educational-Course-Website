@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 import { prisma } from '$lib/server/prisma';
 import type { AuthUser } from '@prisma/client';
 
-const rowsPerPage = 100;
+const rowsPerPage = 300;
 
 export const load: PageServerLoad = async ({ locals, url }) => {
 	const session = await locals.auth.validate();
@@ -45,9 +45,9 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 			},
 			include: {
 				progress: true
-			}
-			//skip: (page - 1) * rowsPerPage,
-			//take: rowsPerPage
+			},
+			skip: (page - 1) * rowsPerPage,
+			take: rowsPerPage
 		});
 	}
 
@@ -58,7 +58,8 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 		count: count,
 		rowsPerPage: rowsPerPage,
 		query: query,
-		page: page
+		page: page,
+		totalPages: Math.ceil(count / rowsPerPage)
 	};
 };
 
