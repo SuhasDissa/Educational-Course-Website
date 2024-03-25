@@ -35,7 +35,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 				progress: true
 			},
 			where: {
-				OR: [{ username: { contains: query } }, { name: { contains: query } }]
+				OR: [{ username: { contains: query, mode: 'insensitive', } }, { name: { contains: query, mode: 'insensitive', } }]
 			}
 		});
 	} else {
