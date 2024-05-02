@@ -2,6 +2,16 @@
 	import ImageBanner from './ImageBanner.svelte';
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
+
+	// images
+	import childen1 from '../images/children/01.webp';
+	import childen2 from '../images/children/02.webp';
+	import childen3 from '../images/children/03.webp';
+	import childen4 from '../images/children/04.webp';
+	import childen5 from '../images/children/05.webp';
+	import childen6 from '../images/children/06.webp';
+	import childen7 from '../images/children/07.webp';
+
 	let slides = [
 		{
 			title: 'home.vision',
@@ -16,15 +26,7 @@
 			description: 'home.welcome_description'
 		}
 	];
-	let images = [
-		'images/children/01.jpg',
-		'images/children/02.jpg',
-		'images/children/03.jpg',
-		'images/children/04.jpg',
-		'images/children/05.jpg',
-		'images/children/06.jpg',
-		'images/children/07.jpg'
-	];
+	let images = [childen1, childen2, childen3, childen4, childen5, childen6, childen7];
 	let currentSlide = 0;
 	let currentImage = 0;
 
