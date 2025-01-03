@@ -65,7 +65,7 @@
 		{/if}
 	</div>
 	<p
-		class="max-h-48 grow overflow-hidden p-6 text-lg font-normal text-slate-500 dark:text-slate-400 sm:text-xl"
+		class="max-h-48 grow overflow-hidden p-6 text-lg font-normal text-slate-500 sm:text-xl dark:text-slate-400"
 	>
 		{module.description[loc]}
 	</p>

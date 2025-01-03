@@ -7,13 +7,16 @@
 	let modules = data.modules;
 </script>
 
-<div class="mx-auto max-w-screen-xl px-8 py-8">
-	<h2 class="text-2xl font-bold text-slate-600 dark:text-slate-400 sm:text-3xl md:text-5xl">
-		{$t('all_modules')}
-	</h2>
-	<div class="grid grid-flow-row grid-cols-1 gap-4 pt-4 sm:grid-cols-2 sm:pt-8 md:grid-cols-3">
-		{#each modules as module}
-			<ModuleCard {module} />
-		{/each}
+<div class="mx-auto max-w-screen-xl px-8 pb-16 pt-16 sm:pt-8">
+	<div class="card bg-base-100 p-6 shadow-xl">
+		<div class="text-xl font-semibold">{$t('all_modules')}</div>
+
+		<div class="divider mt-2"></div>
+
+		<div class="grid grid-flow-row grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+			{#each modules as module}
+				<ModuleCard {module} />
+			{/each}
+		</div>
 	</div>
 </div>

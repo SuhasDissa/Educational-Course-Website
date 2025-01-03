@@ -19,11 +19,23 @@ export const load: PageServerLoad = async ({ locals }) => {
 		throw redirect(302, '/');
 	}
 
-	const [allCount, adminCount, practical, module1, module2, module3, module4, module5, module6, module7, module8] = await prisma.$transaction([
+	const [
+		allCount,
+		adminCount,
+		practical,
+		module1,
+		module2,
+		module3,
+		module4,
+		module5,
+		module6,
+		module7,
+		module8
+	] = await prisma.$transaction([
 		prisma.authUser.count(),
 		prisma.authUser.count({
 			where: {
-				role: "admin"
+				role: 'admin'
 			}
 		}),
 		prisma.progress.count({ where: { practical: true } }),
@@ -34,22 +46,22 @@ export const load: PageServerLoad = async ({ locals }) => {
 		prisma.progress.count({ where: { module5: true } }),
 		prisma.progress.count({ where: { module6: true } }),
 		prisma.progress.count({ where: { module7: true } }),
-		prisma.progress.count({ where: { module8: true } }),
+		prisma.progress.count({ where: { module8: true } })
 	]);
 
 	const output = {
 		allCount: allCount,
 		adminCount: adminCount,
 		progress: {
-			module1: module1,  // Count for users who completed module1
-			module2: module2,  // Count for users who completed module2
+			module1: module1, // Count for users who completed module1
+			module2: module2, // Count for users who completed module2
 			module3: module3,
 			module4: module4,
 			module5: module5,
 			module6: module6,
 			module7: module7,
 			module8: module8,
-			practical: practical, // Count for users who completed the practical section
+			practical: practical // Count for users who completed the practical section
 		},
 		progressPercent: {
 			module1: ((module1 / allCount) * 100).toFixed(2),
@@ -60,12 +72,11 @@ export const load: PageServerLoad = async ({ locals }) => {
 			module6: ((module6 / allCount) * 100).toFixed(2),
 			module7: ((module7 / allCount) * 100).toFixed(2),
 			module8: ((module8 / allCount) * 100).toFixed(2),
-			practical: ((practical / allCount) * 100).toFixed(2),
+			practical: ((practical / allCount) * 100).toFixed(2)
 		}
-	}
+	};
 
 	console.log(output);
-
 
 	return output;
 };

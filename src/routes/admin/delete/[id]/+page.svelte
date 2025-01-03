@@ -13,7 +13,7 @@
 		</div>
 		<button
 			type="submit"
-			class="text-md w-full rounded-lg bg-red-700 px-5 py-2.5 text-center font-bold text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-slate-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 sm:w-auto"
+			class="text-md w-full rounded-lg bg-red-700 px-5 py-2.5 text-center font-bold text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-slate-300 sm:w-auto dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
 			>Delete</button
 		>
 	</form>

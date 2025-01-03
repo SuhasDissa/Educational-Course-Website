@@ -16,9 +16,9 @@
 	});
 </script>
 
-<ProgressBar class="text-slate-500" zIndex={100}/>
+<ProgressBar class="text-slate-500" zIndex={100} />
 
-<div class="min-h-screen bg-slate-100 pt-16 font-sans antialiased dark:bg-slate-900">
+<div class="min-h-screen bg-base-200 pt-16 font-sans antialiased">
 	<Navigation />
 
 	<!-- Page Content -->

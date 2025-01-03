@@ -12,10 +12,20 @@
 				Edit User
 			</h5>
 		</div>
-		<div
-			class="text-md mb-4 rounded-lg bg-slate-50 p-4 text-yellow-800 dark:bg-slate-800 dark:text-yellow-400"
-			role="alert"
-		>
+		<div class="alert alert-warning" role="alert">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-6 w-6 shrink-0 stroke-current"
+				fill="none"
+				viewBox="0 0 24 24"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+				/>
+			</svg>
 			{$t('use_english')}
 		</div>
 		<div class="mb-6">
@@ -73,10 +83,10 @@
 		<div class="mb-6">
 			<h3 class=" text-md mb-2 font-bold text-slate-900 dark:text-slate-200">Role</h3>
 			<ul
-				class="w-full items-center rounded-lg border border-slate-200 bg-white text-sm font-medium text-slate-900 dark:border-slate-600 dark:bg-slate-700 dark:text-white sm:flex"
+				class="w-full items-center rounded-lg border border-slate-200 bg-white text-sm font-medium text-slate-900 sm:flex dark:border-slate-600 dark:bg-slate-700 dark:text-white"
 			>
 				<li
-					class="w-full border-b border-slate-200 dark:border-slate-600 sm:border-b-0 sm:border-r"
+					class="w-full border-b border-slate-200 sm:border-b-0 sm:border-r dark:border-slate-600"
 				>
 					<div class="flex items-center ps-3">
 						<input
@@ -116,10 +126,10 @@
 		<div class="mb-6">
 			<h3 class=" text-md mb-2 font-bold text-slate-900 dark:text-slate-200">Practical Lesson</h3>
 			<ul
-				class="w-full items-center rounded-lg border border-slate-200 bg-white text-sm font-medium text-slate-900 dark:border-slate-600 dark:bg-slate-700 dark:text-white sm:flex"
+				class="w-full items-center rounded-lg border border-slate-200 bg-white text-sm font-medium text-slate-900 sm:flex dark:border-slate-600 dark:bg-slate-700 dark:text-white"
 			>
 				<li
-					class="w-full border-b border-slate-200 dark:border-slate-600 sm:border-b-0 sm:border-r"
+					class="w-full border-b border-slate-200 sm:border-b-0 sm:border-r dark:border-slate-600"
 				>
 					<div class="flex items-center ps-3">
 						<input
@@ -158,7 +168,7 @@
 		</div>
 		<button
 			type="submit"
-			class="text-md w-full rounded-lg bg-slate-700 px-5 py-2.5 text-center font-bold text-white hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 sm:w-auto"
+			class="text-md w-full rounded-lg bg-slate-700 px-5 py-2.5 text-center font-bold text-white hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 sm:w-auto dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
 			>Save</button
 		>
 	</form>
@@ -170,12 +180,12 @@
 		</div>
 		<a
 			href="/admin/pw/{user.id}"
-			class="text-md w-full rounded-lg bg-slate-700 px-5 py-2.5 text-center font-bold text-white hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 sm:w-auto"
+			class="text-md w-full rounded-lg bg-slate-700 px-5 py-2.5 text-center font-bold text-white hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 sm:w-auto dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
 			>Change Password</a
 		>
 		<a
 			href="/admin/delete/{user.id}"
-			class="text-md w-full rounded-lg bg-red-700 px-5 py-2.5 text-center font-bold text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-slate-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 sm:w-auto"
+			class="text-md w-full rounded-lg bg-red-700 px-5 py-2.5 text-center font-bold text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-slate-300 sm:w-auto dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
 			>Delete Usesr</a
 		>
 	</div>

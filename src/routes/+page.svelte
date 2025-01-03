@@ -2,8 +2,8 @@
 	import HomeCarousel from '../components/HomeCarousel.svelte';
 	import { t } from '$lib/i18n';
 
-	import uvaFlag from '../images/uvaflag.webp'
-	import unicef2 from '../images/unicef2.webp'
+	import uvaFlag from '../images/uvaflag.webp';
+	import unicef2 from '../images/unicef2.webp';
 </script>
 
 <div class="mx-auto flex h-full max-w-screen-xl flex-col content-center justify-center px-8 py-8">
@@ -11,12 +11,12 @@
 		<img class="h-32 object-contain" src={uvaFlag} alt="" srcset="" />
 		<div class="w-full pt-4 text-center sm:pt-0">
 			<h1
-				class="text-lg font-bold text-slate-900 dark:text-slate-100 sm:text-xl md:text-2xl lg:text-3xl"
+				class="text-lg font-bold text-slate-900 sm:text-xl md:text-2xl lg:text-3xl dark:text-slate-100"
 			>
 				{$t('title')}
 			</h1>
 			<h2
-				class="text-md pt-4 font-bold text-slate-700 dark:text-slate-400 sm:text-lg md:text-xl lg:text-2xl"
+				class="text-md pt-4 font-bold text-slate-700 sm:text-lg md:text-xl lg:text-2xl dark:text-slate-400"
 			>
 				{$t('subtitle')}
 			</h2>
