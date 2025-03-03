@@ -20,7 +20,7 @@ jobs:
           postgresql_version: '16'
           options: '--no-acl --no-owner'
       - name: Upload dump as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: database-dump
           path: 'backup_${{ env.NOW }}.sql'
